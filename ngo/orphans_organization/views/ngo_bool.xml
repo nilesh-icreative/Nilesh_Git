@@ -1,0 +1,15 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<odoo>
+    <record id="ngo_check_bool" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="company_type" position="after">
+                <field  name="ngo_check" attrs="{'invisible':[('company_type','=','person')]}"/><name attrs="{'invisible':[('company_type','=','person')]}"><b>Ngo</b></name>
+            </field>
+
+        </field>
+    </record>
+
+</odoo>

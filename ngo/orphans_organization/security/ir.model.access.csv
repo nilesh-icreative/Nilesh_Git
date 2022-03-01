@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_orphans_organization,orphans.organization,model_orphans_organization,base.group_user,1,1,1,1
+access_orphans_request,orphans.request,model_orphans_request,base.group_user,1,1,1,1
+access_orphans_member,orphans.member,model_orphans_member,base.group_user,1,1,1,1
+access_orphans_organization_donation,orphans.organization.donation,model_orphans_organization_donation,base.group_user,1,1,1,1
+access_orphans_organization_expense,orphans.organization.expense,model_orphans_organization_expense,base.group_user,1,1,1,1
+access_orphans_advertise,orphans.advertise,model_orphans_advertise,base.group_user,1,1,1,1
