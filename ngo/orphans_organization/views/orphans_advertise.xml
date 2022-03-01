@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+    <!-- explicit list view orphans definition -->
+
+      <record model="ir.ui.view" id="orphans_a_form">
+      <field name="name">Orphans Member form</field>
+      <field name="model">orphans.advertise</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button  name="s_button" type="object" icon="fa-globe icon">
+                <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Advertise</span>
+                  <span class="o_stat_text">Preview</span>
+                </div>
+              </button>
+          </div>
+        <group>
+          <group>
+            <field name="o_organization"/>
+            <field name="avl_seats"/>
+            <field name="exp_dates"/>
+          </group>
+
+
+          <group>
+            <field name="facilities"/>
+<!--            <field name="o_organization"/>-->
+          </group>
+        </group>
+
+          <group>
+            <group>
+                  <field name="s1" placeholder="Street 1"/>
+                  <field name="s2" string="" placeholder="Street 2"/>
+            </group>
+            <group>
+                <div style="width:50%">
+                  <field name="city" style="width:30%" placeholder="City" string=""/>
+                  <field name="state"  style="width:30%" placeholder="State" string=""/>
+                  <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
+                  <field name="country" placeholder="Country" string=""/>
+                </div>
+            </group>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="orphans_advertise_form">
+      <field name="name">Orphans Advertise form</field>
+      <field name="model">orphans.advertise</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="o_organization"/>
+            <field name="avl_seats"/>
+            <field name="exp_dates"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="orphans_advertise_action_window">
+      <field name="name">Orphans Advertise window</field>
+      <field name="res_model">orphans.advertise</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Orphans Advertise" id="orphans_advertise_menu" parent="orphans_organization_menu_root"
+              action="orphans_advertise_action_window"/>
+
+
+  </data>
+</odoo>

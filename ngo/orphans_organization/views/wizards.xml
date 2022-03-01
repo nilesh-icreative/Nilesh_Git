@@ -1,0 +1,71 @@
+<odoo>
+  <data>
+    <!-- explicit list view orphans definition -->
+
+    <record model="ir.ui.view" id="orphans_r__form">
+      <field name="name">Orphans Request form</field>
+      <field name="model">orphans.request</field>
+      <field name="arch" type="xml">
+        <form>
+          <div class="oe_button_box" name="button_box">
+              <button  name="s_button" type="object" icon="fa-globe icon">
+                <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Request</span>
+                  <span class="o_stat_text">Preview</span>
+                </div>
+              </button>
+          </div>
+        <group>
+          <group>
+            <field name="name"/>
+            <field name="dob"/>
+            <field name="age"/>
+          </group>
+
+
+          <group>
+            <field name="g_name"/>
+            <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
+          </group>
+        </group>
+
+          <group>
+            <group>
+                  <field name="s1" placeholder="Street 1"/>
+                  <field name="s2" string="" placeholder="Street 2"/>
+            </group>
+            <group>
+                <div style="width:50%">
+                  <field name="city" style="width:30%" placeholder="City" string=""/>
+                  <field name="state"  style="width:30%" placeholder="State" string=""/>
+                  <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
+                  <field name="country" placeholder="Country" string=""/>
+                </div>
+            </group>
+          </group>
+
+          <footer>
+            <button name="val_age" class="btn-primary" string="Save" type="object"/>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="orphans_request_action_window">
+      <field name="name">Orphans Request window</field>
+      <field name="res_model">orphans.request</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+
+    <menuitem name="Orphans Request" id="orphan_request_menu" parent="orphans_organization_menu_root"
+                  action="orphans_request_action_window"/>
+
+
+  </data>
+</odoo>
