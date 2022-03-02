@@ -24,7 +24,8 @@
             </group>
 
             <group>
-              <field name="o_organization"/>
+<!--              <field name="o_organization"/>-->
+              <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
               <field name="notes"/>
             </group>
           </group>
@@ -42,7 +43,7 @@
             <field name="name"/>
             <field name="e_type"/>
             <field name="e_amount"/>
-            <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+            <field name="o_organization"/>
             <field name="notes"/>
         </tree>
       </field>

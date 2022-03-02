@@ -18,7 +18,8 @@
           </div>
         <group>
           <group>
-            <field name="o_organization"/>
+<!--            <field name="o_organization"/>-->
+            <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
             <field name="avl_seats"/>
             <field name="exp_dates"/>
           </group>

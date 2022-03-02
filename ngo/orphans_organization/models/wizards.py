@@ -8,6 +8,7 @@ from datetime import *
 class orphans_request(models.TransientModel):
 
     _name = "orphans.request"
+    _description = "orphans request"
 
     ngo = fields.Char(string="Ngo")
     name = fields.Char(required=True)
@@ -34,6 +35,7 @@ class orphans_request(models.TransientModel):
             for i in self:
                 today = date.today()
                 i.age = today.year - i.dob.year - ((today.month - today.day) < (i.dob.month - i.dob.day))
+
 
     def val_age(self):
         if int(self.age) > 18:
