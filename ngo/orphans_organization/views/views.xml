@@ -53,6 +53,20 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="orphans_organization_tree">
+      <field name="name">Orphans Expense form</field>
+      <field name="model">orphans.organization</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="total_member_orphan"/>
+            <field name="available_fund"/>
+            <field name="total_capacity"/>
+            <field name="foundation_years"/>
+        </tree>
+      </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 

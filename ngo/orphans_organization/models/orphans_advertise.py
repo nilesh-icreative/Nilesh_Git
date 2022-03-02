@@ -6,7 +6,8 @@ class orphans_advertise(models.Model):
     _name = 'orphans.advertise'
     _description = 'orphans_advertise'
 
-    o_organization = fields.Char(string="Organization Home")
+    # o_organization = fields.Char(string="Organization Home")
+    o_organization = fields.Many2one('orphans.organization', string="Organization Home")
     avl_seats = fields.Integer(string="Available Seats")
     exp_dates = fields.Date(string="Expired Dates")
     facilities = fields.Html(string="Facilities")

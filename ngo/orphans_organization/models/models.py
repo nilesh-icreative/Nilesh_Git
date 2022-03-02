@@ -23,10 +23,10 @@ class orphans_organization(models.Model):
     total_capacity = fields.Integer(string="Total Capacity")
     orphan_member = fields.Char(string='Orphan Member')
 
-
     def foundation_y(self):
-        x = [i for i in range(1990,2020)]
-        return  list(enumerate(x))
+        x = [(str(i), i) for i in range(1990, 2022)]
+        return x
+        # return tuple(enumerate(x))
 
     def s_button(self):
         pass
