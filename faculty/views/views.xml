@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="faculty.list">
+      <field name="name">faculty list</field>
+      <field name="model">faculty.faculty</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="faculty_name"/>
+          <field name="faculty_age"/>
+          <field name="name" />
+          <field name="dob"/>
+          <field name="today"/>
+          <field name="subject"/>
+          <field name="add" />
+          <field name="salary"/>
+          <field name="bool"/>
+          <field name="bool1"/>
+          <field name="file"/>
+          <field name="select1"/>
+          <field name="select"/>
+          <field name="refer"/>
+          <field name="refer_s"/>
+          <field name="refer_f"/>
+          <field name="html_wid"/>
+          <field name="value"/>
+          <field name="user"/>
+          <field name="user_comodel"/>
+<!--          <field name="user_delegate"/> -->
+          <field name="value2"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="faculty_action_window">
+      <field name="name">faculty window</field>
+      <field name="res_model">faculty.faculty</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <!-- server action to the one above -->
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="faculty" id="faculty_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="faculty_menu_1" parent="faculty_menu_root" sequence="0"/>
+    <menuitem name="Menu 2" id="faculty_menu_2" parent="faculty_menu_root" sequence="1"/>
+
+
+
+    <!-- actions -->
+
+    <menuitem name="List" id="faculty_menu_1_list" parent="faculty_menu_1"
+              action="faculty_action_window"/>
+    <menuitem name="Server to list" id="faculty" parent="faculty_menu_2"
+              action="faculty_action_window"/>
+  </data>
+</odoo>

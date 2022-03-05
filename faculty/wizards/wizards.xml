@@ -1,0 +1,43 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="wizard_form">
+      <field name="name">wizard list</field>
+      <field name="model">demo_w.faculty</field>
+      <field name="arch" type="xml">
+        <form>
+<!--          <widget name="web_ribbon" title="Yes" bg_color="bg-danger"-->
+<!--                  attrs="{'invisible':[('state','=','done')]}"/>-->
+        <header>
+            <button string="Click" style="background-color:green;"/>
+            <button string="Ok" style="background-color:orange;"/>
+            <button string="Submit" style="background-color:yellow;"/>
+            <field name="state" widget="statusbar" options="{'clickable':'1'}"  statusbar_visible="draft,done,paid"/>
+        </header>
+          <group>
+            <field name="name"/>
+            <field name="from_date"/>
+            <field name="to_date"/>
+          </group>
+        <footer>
+          <button name="print_wizard" class="btn-primary" string="Print" type="object"/>
+          <button string="Cancel" special="cancel"/>
+        </footer>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_window">
+      <field name="name">Wizard window</field>
+      <field name="res_model">demo_w.faculty</field>
+      <field name="view_mode">form</field>
+    </record>
+
+
+    <menuitem name="Wizard_1" id="faculty1" parent="faculty_menu_2"
+              action="action_window"/>
+  </data>
+</odoo>
