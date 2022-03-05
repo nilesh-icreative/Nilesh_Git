@@ -1,0 +1,59 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<odoo>
+    <record id="view_partner_form_modify" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name='vat' position="after">
+                <field name="dob" optional="hide" attrs="{'invisible':[('company_type','=','person')]}"/>
+                <field name="customer_r"/>
+                <field name="partner_id"/>
+                <field name="category_id" widget="many2many_tags"/>
+            </field>
+             <field name="type" position="attributes">
+<!--                <attribute name="attrs">{'invisible':[('company_type','=','company')]}</attribute>-->
+                <attribute name="readonly">0</attribute>
+            </field>
+
+            <xpath expr="//div[hasclass('o_address_format')]/field[@name='street2']" position="after">
+                <field name="street" placeholder="Street_3"/>
+            </xpath>
+
+            <field name="partner_id" position="after">
+                <field name="category_id"/>
+            </field>
+
+            <xpath expr="/form/sheet/notebook/page[@name='sales_purchases']" position="after">
+                <field name="category_id" string="Customer"/>
+            </xpath>
+
+            <xpath expr="/form/sheet/notebook/page/group/group/field[@name='user_id']" position="after">
+                <field name="customer_r"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+
+     <record id="view_contacts_tree_modify" model="ir.ui.view">
+        <field name="name">view_contacts_form_modify</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name='display_name' position="after">
+                <field name="dob"  optional="hide"/>
+<!--                <field name="customer_r" optional="show"/>-->
+            </field>
+            <field name='display_name' position="after">
+<!--                <field name="dob"  optional="hide"/>-->
+                <field name="customer_r" optional="show"/>
+            </field>
+
+
+        </field>
+    </record>
+</odoo>
+
