@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="smart_form">
+      <field name="name">smart Button</field>
+      <field name="model">smart_button</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button  type="action" name="%(faculty.action_window)d" icon="fa-globe icon">
+                <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Smart</span>
+                  <span class="o_stat_text">Button</span>
+                </div>
+              </button>
+              <button name="icon" icon="fa-list icon" type="object"/>
+            </div>
+
+
+            <group>
+              <field name="name"/>
+              <field name="r_no"/>
+              <field name="dep"/>
+            </group>
+          </sheet>
+          <button type="object" name="chatter_button" class="btn-primary" string="Click"/>
+          <div class="oe_chatter">
+            <field name="message_follower_ids"/>
+            <field name="activity_ids"/>
+            <field name="message_ids"/>
+          </div>
+
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="smart_tree_list">
+      <field name="name">smart list</field>
+      <field name="model">smart_button</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="r_no"/>
+          <field name="dep"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="smart_action_window">
+      <field name="name">smart window</field>
+      <field name="res_model">smart_button</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="smart" id="smart_menu_root"/>
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="smart_menu_1" parent="smart_menu_root"/>
+
+
+    <!-- actions -->
+
+    <menuitem name="List" id="smart.menu_1_list" parent="smart_menu_1"
+              action="smart_action_window"/>
+
+
+  </data>
+</odoo>
