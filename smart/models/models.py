@@ -13,6 +13,8 @@ class smart(models.Model):
      r_no = fields.Integer(string="Roll No", tracking=True)
 
 
+
+
 # Sql Constraints For Unique Record Store
      _sql_constraints={
           ('r_no_unique','unique(r_no)',"Roll No Mast Be Unique !")
