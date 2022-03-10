@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+
+    <record model="ir.ui.view" id="rental_type_form">
+      <field name="name">Rental Type Form</field>
+      <field name="model">rental.type</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+
+          <div class="oe_chatter">
+            <field name="message_follower_ids"/>
+            <field name="activity_ids"/>
+            <field name="message_ids"/>
+          </div>
+
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="rental_type_list">
+      <field name="name">Rental Type list</field>
+      <field name="model">rental.type</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="rental_type_action_window">
+      <field name="name">Rental Type window</field>
+      <field name="res_model">rental.type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+       <menuitem name="Rental Type" id="rental_management_menu_2" parent="rental_management_menu_root"
+              action="rental_type_action_window"/>
+
+
+  </data>
+</odoo>
+

@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+
+    <record model="ir.ui.view" id="rental_management_form">
+      <field name="name">Rental Management Form</field>
+      <field name="model">rental.management</field>
+      <field name="arch" type="xml">
+        <form>
+            <header>
+            <button string="Draft" class="btn-primary" type="object" name="btn_draft"/>
+            <button string="Waiting" class="btn-primary" name="btn_waiting" type="object"/>
+            <button string="Approved" class="btn-primary" name="btn_approved" type="object"/>
+            <field name="state" widget="statusbar" options="{'clickable':'1'}"  statusbar_visible="draft,waiting,approve,cancle"/>
+        </header>
+          <sheet>
+            <group>
+            <group>
+              <field name="name"/>
+              <field name="customer"/>
+              <field name="rental_type"/>
+              <field name="rental_product"/>
+            </group>
+
+            <group>
+              <field name="s_date"/>
+              <field name="e_date"/>
+<!--              <field name="c_id"/>-->
+              <field name="currency_id" attrs="{'invisible':1}"/>
+              <field name="price" widget="monetary"/>
+            </group>
+            </group>
+          </sheet>
+
+          <div class="oe_chatter">
+            <field name="message_follower_ids"/>
+            <field name="activity_ids"/>
+            <field name="message_ids"/>
+          </div>
+
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="rental_management_list">
+      <field name="name">Rental Management list</field>
+      <field name="model">rental.management</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="rental_management_action_window">
+      <field name="name">Rental Management window</field>
+      <field name="res_model">rental.management</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Rental Management" id="rental_management_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Rental" id="rental_management_menu_1" parent="rental_management_menu_root"
+              action="rental_management_action_window"/>
+
+    <menuitem name="Rental Type" id="rental_management_menu_2" parent="rental_management_menu_root"
+              action="rental_management_action_window"/>
+
+
+  </data>
+</odoo>
+
+<!--    <menuitem name="Menu 2" id="rental__management.menu_2" parent="rental__management.menu_root"/>-->
+
+    <!-- actions -->
+
+<!--    <menuitem name="List" id="rental__management.menu_1_list" parent="rental__management.menu_1"-->
+<!--              action="rental__management.action_window"/>-->
+<!--    <menuitem name="Server to list" id="rental__management" parent="rental__management.menu_2"-->
+<!--              action="rental__management.action_server"/>-->

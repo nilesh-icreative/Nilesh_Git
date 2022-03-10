@@ -1,0 +1,42 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<odoo>
+    <data>
+    <record id="view_product_form_modify" model="ir.ui.view">
+        <field name="name">product.template.product.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="purchase_ok" position="before">
+                <field name="is_rental"/>
+                <label for="is_rental"></label>
+            </field>
+
+            <xpath expr="/form/sheet/notebook" position="inside">
+                <page name="rental_type" string="Rental Type"
+                       attrs="{'invisible':[('is_rental','=',False)]}">
+                    <group>
+                        <field name="rental_type"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <!-- search view -->
+
+
+      <record id="rental_product_filter" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+
+    <!-- is rental filter added -->
+        <xpath expr="//filter[@name='services']" position="after">
+            <filter string="Is Rental" name="filter_is_rental" domain="[('is_rental', '=', True)]"/>
+        </xpath>
+
+        </field>
+    </record>
+
+    </data>
+</odoo>
