@@ -24,6 +24,7 @@
               <field name="r_no"/>
               <field name="dep"/>
               <button type="object" name="chatter_button" class="btn-primary" string="Click"/>
+              <button type="object" name="fetch_record" class="btn-primary" string="Print"/>
             </group>
           </sheet>
 

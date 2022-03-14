@@ -40,17 +40,7 @@ class smart(models.Model):
                display = "Name:" + rec.name + "<br/>" "Roll_No" + str(rec.r_no) + "<br/>" "Department:" + rec.dep
           self.message_post(body=display)
 
+     def fetch_record(self):
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+          record = self.env['res.partner'].read([])
+          print("===========================", record)
