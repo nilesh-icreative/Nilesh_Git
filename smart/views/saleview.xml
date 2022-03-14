@@ -5,10 +5,51 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <field name="validity_date" position="after">
-                <field name="customer_Email"/>
-            </field>
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button  type="action" name="smart.sale_wizard_action_window" class="oe_stat_button" icon="fa-globe icon">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Wizard</span>
+                        <span class="o_stat_text">Preview</span>
+                    </div>
+                </button>
+            </xpath>
         </field>
+    </record>
+
+    <!-- sale wizard form view -->
+
+    <record model="ir.ui.view" id="sale_wizard_form">
+      <field name="name">sale Wizard form</field>
+      <field name="model">sale_wizard</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+              <group>
+                  <field name="c_name"/>
+                  <field name="c_email"/>
+                  <field name="p_t"/>
+              </group>
+              <group>
+                  <field name="s_p"/>
+                  <field name="s_p_c"/>
+              </group>
+          </group>
+
+          <footer>
+            <button class="btn-primary" string="save"/>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+
+        </form>
+      </field>
+    </record>
+
+        <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="sale_wizard_action_window">
+      <field name="name">Sale Wizard window</field>
+      <field name="res_model">sale_wizard</field>
+      <field name="view_mode">form</field>
     </record>
 
 </odoo>

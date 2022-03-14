@@ -28,8 +28,6 @@
         'views/views.xml',
         'views/related.xml',
         'views/saleview.xml',
-
-
     ],
     # only loaded in demonstration mode
     'license': 'LGPL-3',

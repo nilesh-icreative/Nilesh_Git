@@ -1,0 +1,126 @@
+
+1:- read email and phone number for all res.partner contacts records.
+
+    def search_mail(self):
+
+        res_obj = self.search([])
+        record_list = res_obj.read(['email', 'phone'])
+
+        for rec in record_list:
+            print(rec)
+
+Output:
+
+{'id': 48, 'email': False, 'phone': False}
+{'id': 11, 'email': 'john.b@tech.info', 'phone': '+1 312 349 2324'}
+{'id': 23, 'email': 'soham.palmer15@example.com', 'phone': '(379)-167-2040'}
+{'id': 22, 'email': 'jesse.brown74@example.com', 'phone': '(829)-386-3277'}
+{'id': 15, 'email': 'lumber-inv92@example.com', 'phone': '(828)-316-0593'}
+{'id': 34, 'email': 'lorraine.douglas35@example.com', 'phone': '(443)-648-9155'}
+{'id': 7, 'email': 'mark.brown23@example.com', 'phone': '(441)-695-2334'}
+{'id': 3, 'email': 'admin@yourcompany.example.com', 'phone': '+1 555-555-5555'}
+{'id': 27, 'email': 'nicole.ford75@example.com', 'phone': '(946)-638-6034'}
+{'id': 42, 'email': False, 'phone': False}
+{'id': 43, 'email': 'nil@gmail.com', 'phone': False}
+{'id': 31, 'email': 'oscar.morgan11@example.com', 'phone': '(561)-239-1744'}
+{'id': 12, 'email': 'info@deltapc.com', 'phone': '(803)-873-6126'}
+{'id': 21, 'email': 'billy.fox45@example.com', 'phone': '(915)-498-5611'}
+{'id': 25, 'email': 'edith.sanchez68@example.com', 'phone': '(938)-175-2048'}
+{'id': 37, 'email': 'julie.richards84@example.com', 'phone': '(225)-148-7811'}
+{'id': 24, 'email': 'kim.snyder96@example.com', 'phone': '(215)-379-4865'}
+{'id': 36, 'email': 'sandra.neal80@example.com', 'phone': '(430)-371-7293'}
+{'id': 30, 'email': 'theodore.gardner36@example.com', 'phone': '(186)-612-6561'}
+{'id': 38, 'email': 'travis.mendoza24@example.com', 'phone': '(840)-944-8661'}
+{'id': 13, 'email': 'jackson.group82@example.com', 'phone': '(334)-502-1024'}
+{'id': 29, 'email': 'gordon.owens47@example.com', 'phone': '(336)-723-6569'}
+{'id': 28, 'email': 'toni.rhodes11@example.com', 'phone': '(198)-539-4948'}
+{'id': 41, 'email': 'nilesh@icreativetechnolabs.com', 'phone': False}
+{'id': 9, 'email': 'bhu.a100@ic.example.com', 'phone': '(623)-853-7197'}
+{'id': 17, 'email': 'ron.gibson76@example.com', 'phone': '(976)-397-4091'}
+{'id': 32, 'email': 'tom.ruiz89@example.com', 'phone': '(102)-834-1602'}
+{'id': 16, 'email': 'willie.burke80@example.com', 'phone': '(846)-523-2111'}
+{'id': 1, 'email': 'info@yourcompany.com', 'phone': '+1 (650) 555-0111 '}
+{'id': 39, 'email': 'chester.reed79@example.com', 'phone': '(979)-904-8902'}
+{'id': 40, 'email': 'dwayne.newman28@example.com', 'phone': '(614)-177-4937'}
+{'id': 8, 'email': 'joel.willis63@example.com', 'phone': '(683)-556-5104'}
+{'id': 51, 'email': '@addison', 'phone': False}
+{'id': 50, 'email': 'addison.olson28@example.com', 'phone': False}
+{'id': 44, 'email': False, 'phone': False}
+{'id': 49, 'email': 'olson28@example.com', 'phone': False}
+{'id': 47, 'email': False, 'phone': False}
+{'id': 26, 'email': 'brandon.freeman55@example.com', 'phone': '(355)-687-3262'}
+{'id': 45, 'email': False, 'phone': False}
+{'id': 46, 'email': False, 'phone': False}
+
+2:- read email for all res.partner contacts who email not false.
+
+    def search_mail(self):
+
+        res_obj = self.search([])
+        val = res_obj.read(['email'])
+
+        def not_false_email(val):
+            for i in val:
+                if i['email'] != False:
+                    print(i)
+        not_false_email(val)
+
+Output:
+
+{'id': 35, 'email': 'addison.olson28@example.com'}
+{'id': 14, 'email': 'vauxoo@yourcompany.example.com'}
+{'id': 33, 'email': 'colleen.diaz83@example.com'}
+{'id': 10, 'email': 'info@agrolait.com'}
+{'id': 19, 'email': 'floyd.steward34@example.com'}
+{'id': 18, 'email': 'douglas.fletcher51@example.com'}
+{'id': 20, 'email': 'edwin.hansen58@example.com'}
+{'id': 11, 'email': 'john.b@tech.info'}
+{'id': 23, 'email': 'soham.palmer15@example.com'}
+{'id': 22, 'email': 'jesse.brown74@example.com'}
+{'id': 15, 'email': 'lumber-inv92@example.com'}
+{'id': 34, 'email': 'lorraine.douglas35@example.com'}
+{'id': 7, 'email': 'mark.brown23@example.com'}
+{'id': 3, 'email': 'admin@yourcompany.example.com'}
+{'id': 27, 'email': 'nicole.ford75@example.com'}
+{'id': 43, 'email': 'nil@gmail.com'}
+{'id': 31, 'email': 'oscar.morgan11@example.com'}
+{'id': 12, 'email': 'info@deltapc.com'}
+{'id': 21, 'email': 'billy.fox45@example.com'}
+{'id': 25, 'email': 'edith.sanchez68@example.com'}
+{'id': 37, 'email': 'julie.richards84@example.com'}
+{'id': 24, 'email': 'kim.snyder96@example.com'}
+{'id': 36, 'email': 'sandra.neal80@example.com'}
+{'id': 30, 'email': 'theodore.gardner36@example.com'}
+{'id': 38, 'email': 'travis.mendoza24@example.com'}
+{'id': 13, 'email': 'jackson.group82@example.com'}
+{'id': 29, 'email': 'gordon.owens47@example.com'}
+{'id': 28, 'email': 'toni.rhodes11@example.com'}
+{'id': 41, 'email': 'nilesh@icreativetechnolabs.com'}
+{'id': 9, 'email': 'bhu.a100@ic.example.com'}
+{'id': 17, 'email': 'ron.gibson76@example.com'}
+{'id': 32, 'email': 'tom.ruiz89@example.com'}
+{'id': 16, 'email': 'willie.burke80@example.com'}
+{'id': 1, 'email': 'info@yourcompany.com'}
+{'id': 39, 'email': 'chester.reed79@example.com'}
+{'id': 40, 'email': 'dwayne.newman28@example.com'}
+{'id': 8, 'email': 'joel.willis63@example.com'}
+{'id': 51, 'email': '@addison'}
+{'id': 50, 'email': 'addison.olson28@example.com'}
+{'id': 49, 'email': 'olson28@example.com'}
+
+
+3:- Find partner name of id=18 and id=35.
+
+    def search_mail(self):
+
+        res_obj = self.search([])
+
+        find_record = res_obj.browse([18, 35])
+        dis = find_record.read(['name'])
+        print("========Record=====\n", dis)
+
+
+Output:
+
+ [{'id': 18, 'name': 'Douglas Fletcher'}, {'id': 35, 'name': 'Addison Olson'}]
+
