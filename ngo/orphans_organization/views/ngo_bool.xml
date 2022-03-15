@@ -9,6 +9,51 @@
                 <field  name="ngo_check" attrs="{'invisible':[('company_type','=','person')]}"/><name attrs="{'invisible':[('company_type','=','person')]}"><b>Ngo</b></name>
             </field>
 
+            <!--- Hide Form -->
+            <group position="attributes">
+                <attribute name="attrs">{'invisible': [('ngo_check','=',True)]}</attribute>
+            </group>
+
+            <!-- Display Organization Form -->
+
+            <group position="after">
+                <group attrs="{'invisible':[('ngo_check','=',False)]}">
+                    <group>
+                        <field name="street" placeholder="Street" string="Address"/>
+                        <field name="street2" string="" placeholder="Street 1"/>
+                    </group>
+
+                    <group style="width:20%">
+                        <div>
+                            <field name="city" style="width:30%" placeholder="City" string=""/>
+                            <field name="state_id"  style="width:30%" placeholder="State" string=""/>
+                            <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
+                            <field name="country_id" placeholder="Country" string=""/>
+                        </div>
+                    </group>
+                </group>
+
+                <group style="width:30%" attrs="{'invisible':[('ngo_check','=',False)]}">
+                    <field name="total_member_orphan"/>
+                    <field name="currency_id" attrs="{'invisible':1}"/>
+                    <field name="available_fund" widget="monetary"/>
+                    <field name="total_capacity"/>
+                    <field name="foundation_years"/>
+                </group>
+            </group>
+
+            <!-- Hide Div In Res Partner Form View -->
+
+            <xpath expr="//div[@name='button_box']" position="attributes">
+                <attribute name="attrs">{'invisible': [('ngo_check','=',True)]}</attribute>
+            </xpath>
+            <!-- Hide Notebook in Res Partner -->
+
+            <notebook position="attributes">
+                <attribute name="attrs">{'invisible': [('ngo_check','=',True)]}</attribute>
+            </notebook>
+            
+
         </field>
     </record>
 

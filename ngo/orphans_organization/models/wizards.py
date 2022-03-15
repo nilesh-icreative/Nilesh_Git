@@ -20,11 +20,11 @@ class orphans_request(models.TransientModel):
     s1 = fields.Char(string="Address")
     s2 = fields.Char()
     city = fields.Char()
-    state = fields.Char()
+    state1 = fields.Many2one('res.country.state')
     zip = fields.Char()
-    country = fields.Char()
+    country = fields.Many2one('res.country')
 
-    o_organization = fields.Many2one('orphans.organization', string="Organization Name")
+    o_organization = fields.Many2one('res.partner', string="Organization Name", domain=[('ngo_check', '=', True)])
 
 
 
@@ -41,5 +41,3 @@ class orphans_request(models.TransientModel):
         if int(self.age) > 18:
             raise ValidationError("Age Must Be Below 18 !")
 
-    def s_button(self):
-        pass

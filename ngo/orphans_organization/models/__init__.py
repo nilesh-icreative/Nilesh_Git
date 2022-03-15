@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import models, ngo_bool
+from . import models
+from . import ngo_bool
 from . import wizards
 from . import orphans_member
 from . import orphans_donation
