@@ -7,14 +7,6 @@
       <field name="model">orphans.request</field>
       <field name="arch" type="xml">
         <form>
-          <div class="oe_button_box" name="button_box">
-              <button  name="s_button" type="object" icon="fa-globe icon">
-                <div class="o_field_widget o_stat_info">
-                  <span class="o_stat_text">Request</span>
-                  <span class="o_stat_text">Preview</span>
-                </div>
-              </button>
-          </div>
         <group>
           <group>
             <field name="name"/>
@@ -37,7 +29,7 @@
             <group>
                 <div style="width:50%">
                   <field name="city" style="width:30%" placeholder="City" string=""/>
-                  <field name="state"  style="width:30%" placeholder="State" string=""/>
+                  <field name="state1"  style="width:30%" placeholder="State" string=""/>
                   <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
                   <field name="country" placeholder="Country" string=""/>
                 </div>
@@ -45,7 +37,7 @@
           </group>
 
           <footer>
-            <button name="val_age" class="btn-primary" string="Save" type="object"/>
+            <button name="val_age" class="btn-primary" string="Send" type="object"/>
             <button string="Cancel" special="cancel"/>
           </footer>
 

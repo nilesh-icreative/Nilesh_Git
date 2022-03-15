@@ -1,79 +1,15 @@
 <odoo>
   <data>
-    <!-- explicit list view orphans definition -->
-
-    <record model="ir.ui.view" id="organization_form">
-      <field name="name">Organization form</field>
-      <field name="model">orphans.organization</field>
-      <field name="arch" type="xml">
-        <form>
-        <sheet>
-          <div class="oe_button_box" name="button_box">
-              <button  name="s_button" type="object" icon="fa-globe icon">
-                <div class="o_field_widget o_stat_info">
-                  <span class="o_stat_text">Organization</span>
-                  <span class="o_stat_text">Preview</span>
-                </div>
-              </button>
-          </div>
-
-          <div>
-            <field name="name" placeholder="Orphans Organization Name" widget="text" style="width:75%; font-size:25px"/>
-            <field name="o_image"  widget="image" class="oe_avatar"/>
-          </div>
-          <group>
-
-            <group>
-                <field name="s1" placeholder="Street 1"/>
-                <field name="s2" string="" placeholder="Street 2"/>
-
-            </group>
-
-            <group>
-              <div style="width:50%">
-                <field name="city" style="width:30%" placeholder="City" string=""/>
-                <field name="state"  style="width:30%" placeholder="State" string=""/>
-                <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
-
-                <field name="country" placeholder="Country" string=""/>
-              </div>
-            </group>
-
-            <group>
-              <field name="total_member_orphan"/>
-              <field name="available_fund"/>
-
-              <field name="total_capacity"/>
-              <field name="foundation_years"/>
-            </group>
-
-          </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
-    <record model="ir.ui.view" id="orphans_organization_tree">
-      <field name="name">Orphans Expense form</field>
-      <field name="model">orphans.organization</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-            <field name="total_member_orphan"/>
-            <field name="available_fund"/>
-            <field name="total_capacity"/>
-            <field name="foundation_years"/>
-        </tree>
-      </field>
-    </record>
-
 
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="orphans_organization_action_window">
-      <field name="name">orphans_organization window</field>
-      <field name="res_model">orphans.organization</field>
-      <field name="view_mode">tree,form</field>
+      <field name="name">Organization window</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">kanban,tree,form</field>
+      <field name="context" eval="{'default_company_type': 'company','default_ngo_check': True}"/>
+      <field name="domain">[('ngo_check','=',True)]</field>
     </record>
 
 
@@ -88,8 +24,6 @@
     <menuitem name="Orphans Organization" id="orphans_organization_menu" parent="orphans_organization_menu_root"
               action="orphans_organization_action_window"/>
 
-    <menuitem name="Organization View" id="orphans_organization_view" parent="orphans_organization_menu"
-              action="orphans_organization_action_window"/>
 
   </data>
 </odoo>

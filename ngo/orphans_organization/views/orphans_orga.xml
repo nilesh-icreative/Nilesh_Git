@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+
+
+<record model="ir.ui.view" id="o_organization_form">
+      <field name="name">Organization form</field>
+      <field name="model">res.partner</field>
+      <field name="priority">1</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+                <button icon="fa-globe icon">
+                  <div class="o_field_widget o_stat_info">
+                    <span class="o_stat_text">Organization</span>
+                    <span class="o_stat_text">Preview</span>
+                  </div>
+                </button>
+            </div>
+
+            <div>
+              <field name="name" placeholder="Orphans Organization Name" required="True" style="width:75%; font-size:25px"/>
+              <field name="image_1920"  widget="image" class="oe_avatar"/>
+            </div>
+
+            <group>
+              <group>
+                <field name="street" placeholder="Street 1" string="Address"/>
+                <field name="street2" string="" placeholder="Street 2"/>
+              </group>
+
+              <group>
+                <div style="width:50%">
+                  <field name="city" style="width:30%" placeholder="City" string=""/>
+                  <field name="state_id"  style="width:30%" placeholder="State" string=""/>
+                  <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
+                  <field name="country_id" placeholder="Country" string=""/>
+                </div>
+              </group>
+
+
+              <group>
+                <field name="total_member_orphan"/>
+                <field name="currency_id" attrs="{'invisible':1}"/>
+                <field name="available_fund" widget="monetary"/>
+                <field name="total_capacity"/>
+                <field name="foundation_years"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="o_organization_tree">
+      <field name="name">Orphans Expense form</field>
+      <field name="model">res.partner</field>
+      <field name="priority">1</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="total_member_orphan"/>
+            <field name="available_fund"/>
+            <field name="total_capacity"/>
+            <field name="foundation_years"/>
+        </tree>
+      </field>
+    </record>
+    </data>
+</odoo>
