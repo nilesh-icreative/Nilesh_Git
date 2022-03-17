@@ -8,7 +8,7 @@ class orphans_donation(models.Model):
 
     name = fields.Char(required=True , string="Doner Name")
     # o_organization = fields.Char(string="Orphans Home")
-    o_organization = fields.Many2one('res.partner', string="Organization Home", domain=[('ngo_check', '=', True)])
+    o_organization = fields.Many2one('res.partner', required=True, string="Organization Home", domain=[('ngo_check', '=', True)])
     amount = fields.Integer(string="Amount", required=True)
     phone = fields.Char(string="Phone No")
     email = fields.Char(string="Email")
@@ -25,6 +25,20 @@ class orphans_donation(models.Model):
         if self.state:
             for rec in self:
                 rec.country = rec.state.country_id
+
+    @api.model
+    def default_get(self, field):
+        record = self.env['res.partner']
+        act_id = self.env.context.get("active_id")
+        brow = record.browse(act_id)
+        name_read = brow.read(['id'])
+        # print("==========================",name_read)
+        val = super(orphans_donation, self).default_get(field)
+
+        for r in name_read:
+            val["o_organization"] = r["id"]
+
+        return val
 
     def s_button(self):
         pass
