@@ -23,8 +23,9 @@ class orphans_request(models.TransientModel):
     state1 = fields.Many2one('res.country.state')
     zip = fields.Char()
     country = fields.Many2one('res.country')
-
     o_organization = fields.Many2one('res.partner', required=True, string="Organization Name", domain=[('ngo_check', '=', True)])
+
+    status = fields.Selection([('req', 'Request Sent'), ('apr', 'Approved')], default="req")
 
     @api.model
     def default_get(self, field):
@@ -58,3 +59,23 @@ class orphans_request(models.TransientModel):
             for rec in self:
                 rec.country = rec.state1.country_id
 
+    def create_rec(self):
+        member = self.env['orphans.member']
+
+        for rec in self:
+            val = {
+                'name': rec.name,
+                'g_name': rec.g_name,
+                'dob': rec.dob,
+                'o_organization': rec.o_organization.id,
+                'age': rec.age,
+                's1': rec.s1,
+                's2': rec.s2,
+                'city': rec.city,
+                'state': rec.state1.id,
+                'zip': rec.zip,
+                'country': rec.country.id,
+                'designation': 'member',
+            }
+        member.create(val)
+        self.status = "apr"

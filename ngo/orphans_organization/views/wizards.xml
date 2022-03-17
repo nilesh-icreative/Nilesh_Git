@@ -13,8 +13,6 @@
             <field name="dob"/>
             <field name="age"/>
           </group>
-
-
           <group>
             <field name="g_name"/>
             <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
@@ -45,6 +43,38 @@
       </field>
     </record>
 
+    <!-- Wizard Tree View -->
+    <record model="ir.ui.view" id="orphans_request_tree_view">
+      <field name="name">Orphans Request window</field>
+      <field name="model">orphans.request</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="age"/>
+          <field name="o_organization"/>
+          <field name="status"/>
+          <button string="Approved"  class="btn-primary" name="create_rec" type="object"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Group by Request -->
+
+    <record model='ir.ui.view' id='request_search'>
+    <field name='name'>Member view</field>
+    <field name='model'>orphans.request</field>
+    <field name='arch' type='xml'>
+      <search string='Search View'>
+        <field name="name"/>
+        <field name='age'/>
+        <field name='o_organization'/>
+        <group string='Group By'>
+          <filter name='Organization_filter' string='Organization' context="{'group_by':'o_organization'}"/>
+        </group>
+      </search>
+    </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 
@@ -54,10 +84,6 @@
       <field name="view_mode">form</field>
       <field name="target">new</field>
     </record>
-
-    <menuitem name="Orphans Request" id="orphan_request_menu" parent="orphans_organization_menu_root"
-                  action="orphans_request_action_window"/>
-
 
   </data>
 </odoo>
