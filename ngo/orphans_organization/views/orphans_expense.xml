@@ -8,24 +8,18 @@
       <field name="arch" type="xml">
         <form>
           <sheet>
-            <div class="oe_button_box" name="button_box">
-              <button  name="s_button" type="object" icon="fa-globe icon">
-                <div class="o_field_widget o_stat_info">
-                  <span class="o_stat_text">Expense</span>
-                  <span class="o_stat_text">Preview</span>
-                </div>
-              </button>
-          </div>
+
           <group>
             <group>
+              <field name="name_user"/>
               <field name="name"/>
-              <field name="e_type"/>
-              <field name="e_amount"/>
+              <field name="currency_id" attrs="{'invisible':1}"/>
+              <field name="e_amount" widget="monetary"/>
             </group>
 
             <group>
 <!--              <field name="o_organization"/>-->
-              <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True}"/>
+              <field name="od_organization" />
               <field name="notes"/>
             </group>
           </group>
@@ -40,10 +34,11 @@
       <field name="model">orphans.organization.expense</field>
       <field name="arch" type="xml">
         <tree>
+            <field name="name_user"/>
             <field name="name"/>
-            <field name="e_type"/>
-            <field name="e_amount"/>
-            <field name="o_organization"/>
+            <field name="currency_id" attrs="{'column_invisible':1}"/>
+            <field name="e_amount" widget="monetary"/>
+            <field name="od_organization"/>
             <field name="notes"/>
         </tree>
       </field>
@@ -58,8 +53,30 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="orphans_expense_action_window1">
+      <field name="name">Orphans Expense window</field>
+      <field name="res_model">orphans.organization.expense</field>
+      <field name="view_mode">form</field>
+    </record>
 
-    <menuitem name="Orphans Expense" id="orphans_expense_menu" parent="orphans_organization_menu_root"
+    <!-- Group By Expense Type -->
+
+    <record model='ir.ui.view' id='expense_group'>
+    <field name='name'>Group view</field>
+    <field name='model'>orphans.organization.expense</field>
+    <field name='arch' type='xml'>
+      <search string='Search View'>
+        <field name="name_user"/>
+        <field name='name'/>
+        <group string='Group By'>
+          <filter name='expense_type' string='Expense Type' context="{'group_by':'name'}"/>
+        </group>
+      </search>
+    </field>
+    </record>
+
+
+    <menuitem name="Expense" id="orphans_expense_menu" parent="orphans_organization_setting"
               action="orphans_expense_action_window"/>
 
 

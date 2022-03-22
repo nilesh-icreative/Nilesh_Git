@@ -20,7 +20,8 @@
           <group>
             <field name="name"/>
             <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
-            <field name="amount"/>
+            <field name="currency_id" attrs="{'invisible':1}"/>
+            <field name="amount" widget="monetary"/>
           </group>
 
 
@@ -79,9 +80,7 @@
       <field name="view_mode">form</field>
     </record>
 
-    <menuitem name="Orphans Donation" id="orphans_donation_menu" parent="orphans_organization_menu_root"
+    <menuitem name="Donation" id="orphans_organization_donation" parent="orphans_organization_setting"
               action="orphans_donation_action_window"/>
-
-
   </data>
 </odoo>

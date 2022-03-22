@@ -22,8 +22,6 @@ class orphans_member(models.Model):
     country = fields.Many2one('res.country')
     designation = fields.Selection([('manager', 'Manager'),('member', 'Member')])
 
-
-
     @api.depends("dob")
     def cal_dob(self):
         if self.dob:

@@ -53,7 +53,7 @@
           <field name="age"/>
           <field name="o_organization"/>
           <field name="status"/>
-          <button string="Approved"  class="btn-primary" name="create_rec" type="object"/>
+          <button attrs="{'invisible':[('status','=', 'apr')]}" string="Approved"  class="btn-primary" name="create_rec" type="object"/>
         </tree>
       </field>
     </record>

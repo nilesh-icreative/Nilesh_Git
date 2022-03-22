@@ -5,3 +5,4 @@ access_orphans_member,orphans.member,model_orphans_member,base.group_user,1,1,1,
 access_orphans_organization_donation,orphans.organization.donation,model_orphans_organization_donation,base.group_user,1,1,1,1
 access_orphans_organization_expense,orphans.organization.expense,model_orphans_organization_expense,base.group_user,1,1,1,1
 access_orphans_advertise,orphans.advertise,model_orphans_advertise,base.group_user,1,1,1,1
+access_expense_type,expense_type,model_expense_type,base.group_user,1,1,1,1
