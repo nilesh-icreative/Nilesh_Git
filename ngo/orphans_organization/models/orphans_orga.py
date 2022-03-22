@@ -5,3 +5,6 @@ class ngo(models.Model):
 
     _inherit = 'res.partner'
 
+
+
+

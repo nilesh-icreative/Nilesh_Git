@@ -7,4 +7,5 @@ from . import orphans_member
 from . import orphans_donation
 from . import orphans_expense
 from . import orphans_advertise
+from . import expense_type
 

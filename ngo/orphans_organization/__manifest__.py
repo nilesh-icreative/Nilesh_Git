@@ -33,6 +33,7 @@
         'views/orphans_expense.xml',
         'views/orphans_advertise.xml',
         'views/orphans_orga.xml',
+        'views/expense_type.xml',
 
 
     ],

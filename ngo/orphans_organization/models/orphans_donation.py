@@ -9,6 +9,7 @@ class orphans_donation(models.Model):
     name = fields.Char(required=True , string="Doner Name")
     # o_organization = fields.Char(string="Orphans Home")
     o_organization = fields.Many2one('res.partner', required=True, string="Organization Home", domain=[('ngo_check', '=', True)])
+    currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
     amount = fields.Integer(string="Amount", required=True)
     phone = fields.Char(string="Phone No")
     email = fields.Char(string="Email")
@@ -19,6 +20,7 @@ class orphans_donation(models.Model):
     state = fields.Many2one('res.country.state')
     zip = fields.Char()
     country = fields.Many2one('res.country')
+
 
     @api.onchange("state")
     def check_country(self):
@@ -40,8 +42,19 @@ class orphans_donation(models.Model):
 
         return val
 
+    @api.onchange("amount")
+    def onchange_amount(self):
+        d_amount = self.amount
+        donation_fund = self.o_organization.available_fund
+        amount = donation_fund + d_amount
+        self.o_organization.available_fund = amount
+        print("=========================", amount)
+
     def s_button(self):
         pass
+
+
+
 
 
 

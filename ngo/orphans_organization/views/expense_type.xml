@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+    <!-- explicit list view orphans Member Form View -->
+
+      <record model="ir.ui.view" id="expense_form">
+      <field name="name">Expense form</field>
+      <field name="model">expense_type</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+      </record>
+
+
+
+    <!-- Orphans Member Tree View -->
+
+    <record model="ir.ui.view" id="expense_tree">
+      <field name="name">Expense Type Tree</field>
+      <field name="model">expense_type</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- orphans Member Action -->
+    <record model="ir.actions.act_window" id="expense_action_window">
+      <field name="name">Expense window</field>
+      <field name="res_model">expense_type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Expense Type" id="expense_menu" parent="orphans_organization_setting"
+              action="expense_action_window"/>
+  </data>
+</odoo>

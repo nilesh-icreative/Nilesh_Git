@@ -14,9 +14,14 @@
                   <span class="o_stat_text">Request</span>
                 </div>
               </button>
-              <button attrs="{'invisible':[('designation','=','member')]}" name="%(orphans_advertise_action_window)d" type="action" icon="fa-bullhorn" class="oe_highlight">
+              <button attrs="{'invisible':[('designation','=','member')]}" name="%(orphans_advertise_action_window1)d" type="action" icon="fa-bullhorn" class="oe_highlight">
                 <div class="o_field_widget o_stat_info">
                   <span class="o_stat_text">Advertising</span>
+                </div>
+              </button>
+              <button name="%(orphans_expense_action_window1)d" type="action" icon="fa-edit" class="oe_highlight">
+                <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Expense</span>
                 </div>
               </button>
             </div>
@@ -77,8 +82,9 @@
     <record model="ir.actions.act_window" id="orphans_member_action_window">
       <field name="name">Orphans Member window</field>
       <field name="res_model">orphans.member</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
+
 
     <!-- Manager Request Confirm tree View -->
 
@@ -88,6 +94,28 @@
       <field name="view_mode">tree</field>
       <field name="view_id" ref="orphans_request_tree_view"/>
     </record>
+
+    <!-- Group By Member And Manager -->
+
+    <record model='ir.ui.view' id='member_search'>
+    <field name='name'>Member view</field>
+    <field name='model'>orphans.member</field>
+    <field name='arch' type='xml'>
+      <search string='Search View'>
+        <field name="name"/>
+        <field name='age'/>
+        <field name='o_organization'/>
+        <group string='Group By'>
+          <filter name='member_filter' string='Designation' context="{'group_by':'designation'}"/>
+          <filter name='organization_filter' string='Organization' context="{'group_by':'o_organization'}"/>
+
+        </group>
+        <filter name='manager_filter' string='Manager' domain="[('designation','=','manager')]"/>
+        <filter name='member_filter' string='Member' domain="[('designation','=','member')]"/>
+      </search>
+    </field>
+    </record>
+
 
     <menuitem name="Orphans member" id="orphans_member_menu" parent="orphans_organization_menu_root"
               action="orphans_member_action_window"/>

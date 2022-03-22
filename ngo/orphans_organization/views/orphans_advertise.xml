@@ -1,8 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view orphans definition -->
-
-      <record model="ir.ui.view" id="orphans_a_form">
+    <record model="ir.ui.view" id="orphans_a_form">
       <field name="name">Orphans Member form</field>
       <field name="model">orphans.advertise</field>
       <field name="arch" type="xml">
@@ -15,36 +14,23 @@
                   <span class="o_stat_text">Preview</span>
                 </div>
               </button>
-          </div>
-        <group>
-          <group>
-<!--            <field name="o_organization"/>-->
-            <field name="o_organization" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"/>
-            <field name="avl_seats"/>
-            <field name="exp_dates"/>
-          </group>
-
-
-          <group>
-            <field name="facilities"/>
-<!--            <field name="o_organization"/>-->
-          </group>
-        </group>
-
-          <group>
+            </div>
+            <div>
+              <field  options="{'no_open':True}" name="dona_organization" placeholder="Orphans Organization Name" required="True" style="width:55%; font-size:25px"/>
+              <field  name="image"  widget="image" class="oe_avatar"/>
+            </div>
             <group>
-                  <field name="s1" placeholder="Street 1"/>
-                  <field name="s2" string="" placeholder="Street 2"/>
+              <group>
+                <field name="exp_dates" style="width:50%;"/>
+                <field name="avl_seats" style="width:50%;"/>
+              </group>
             </group>
             <group>
-                <div style="width:50%">
-                  <field name="city" style="width:30%" placeholder="City" string=""/>
-                  <field name="state"  style="width:30%" placeholder="State" string=""/>
-                  <field name="zip"  style="width:40%" placeholder="Zip" string=""/>
-                  <field name="country" placeholder="Country" string=""/>
-                </div>
+              <field name="facilities"/>
             </group>
-          </group>
+            <group>
+                <field name="address"/>
+              </group>
           </sheet>
         </form>
       </field>
@@ -55,9 +41,9 @@
       <field name="model">orphans.advertise</field>
       <field name="arch" type="xml">
         <tree>
-            <field name="o_organization"/>
-            <field name="avl_seats"/>
-            <field name="exp_dates"/>
+          <field name="dona_organization"/>
+          <field name="avl_seats"/>
+          <field name="exp_dates"/>
         </tree>
       </field>
     </record>
@@ -71,10 +57,16 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- actions Advertise Fore View -->
 
-    <menuitem name="Orphans Advertise" id="orphans_advertise_menu" parent="orphans_organization_menu_root"
+    <record model="ir.actions.act_window" id="orphans_advertise_action_window1">
+      <field name="name">Orphans Advertise window</field>
+      <field name="res_model">orphans.advertise</field>
+      <field name="view_mode">form</field>
+    </record>
+
+    <menuitem name="Advertise" id="orphans_advertise_menu" parent="orphans_organization_setting"
               action="orphans_advertise_action_window"/>
-
 
   </data>
 </odoo>
