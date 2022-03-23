@@ -26,7 +26,7 @@
               </group>
             </group>
             <group>
-              <field name="facilities"/>
+                <field name="facilities"/>
             </group>
             <group>
                 <field name="address"/>
@@ -54,7 +54,7 @@
     <record model="ir.actions.act_window" id="orphans_advertise_action_window">
       <field name="name">Orphans Advertise window</field>
       <field name="res_model">orphans.advertise</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
 
     <!-- actions Advertise Fore View -->
@@ -65,8 +65,13 @@
       <field name="view_mode">form</field>
     </record>
 
+    <menuitem name="Advertise" id="orphans_menu_adv" parent="orphans_organization_menu_root"
+              action="orphans_advertise_action_window"/>
+
     <menuitem name="Advertise" id="orphans_advertise_menu" parent="orphans_organization_setting"
               action="orphans_advertise_action_window"/>
+
+
 
   </data>
 </odoo>

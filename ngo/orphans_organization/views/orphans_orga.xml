@@ -10,7 +10,7 @@
           <search string='Search View'>
             <field name='name'/>
             <group string='Group By'>
-              <filter name='city_filter' string='City' context="{'group_by':'city'}"/>
+<!--              <filter name='city_filter' string='City' context="{'group_by':'city'}"/>-->
             </group>
 <!--            <filter name='manager_filter' string='Manager' domain="[('designation','=','manager')]"/>-->
       </search>
@@ -95,11 +95,12 @@
             <field name="state_id"/>
             <field name="total_member_orphan"/>
             <field name="total_capacity"/>
+            <field name="space"/>
             <templates>
               <t t-name="kanban-box">
-                <div t-attf-class="oe_kanban_global_click" style="width:95mm; height:40mm">
+                <div t-attf-class="oe_kanban_global_click" style="width:100mm; height:45mm">
                   <div class="o_kanban_image" style="width:45mm;">
-                    <img alt="Avatar" style="height:31mm;" t-att-src="kanban_image('res.partner', 'image_1920',record.id.raw_value)"/>
+                    <img alt="Avatar" style="height:37mm;" t-att-src="kanban_image('res.partner', 'image_1920',record.id.raw_value)"/>
                   </div>
                   <div class="oe_kanban_details">
                     <strong class="o_kanban_record_title" style="font-size:15px;">
@@ -113,13 +114,18 @@
                     </div>
                     <div t-if="record.total_member_orphan.value">
                       <span style='margin-right:1.25em'></span>
-                      <text>Member:</text>
+                      <text>Total Member:</text>
                       <t t-esc="record.total_member_orphan.value"/>
                     </div>
-                    <div t-if="record.total_capacity.value" >
+                    <div t-if="record.total_capacity.value">
+                      <span style='margin-right:1.25em'></span>
+                      <text>Total Capacity:</text>
+                      <t t-esc="record.total_capacity.value"/>
+                    </div>
+                    <div t-if="record.space.value">
                       <span style='margin-right:1.25em'></span>
                       <text>Space:</text>
-                      <t t-esc="record.total_capacity.value"/>
+                      <t t-esc="record.space.value"/>
                     </div>
                     <div><p/>
                       <span style='margin-right:1.25em'></span>

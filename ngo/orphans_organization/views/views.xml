@@ -27,6 +27,5 @@
     <menuitem name="Setting" id="orphans_organization_setting" parent="orphans_organization_menu_root"
               action="orphans_organization_action_window"/>
 
-
   </data>
 </odoo>

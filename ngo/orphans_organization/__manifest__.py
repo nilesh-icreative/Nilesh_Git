@@ -34,8 +34,6 @@
         'views/orphans_advertise.xml',
         'views/orphans_orga.xml',
         'views/expense_type.xml',
-
-
     ],
     # only loaded in demonstration mode
 
