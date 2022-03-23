@@ -12,12 +12,27 @@ class ngo(models.Model):
     available_fund = fields.Integer(string="Available Funds")
     foundation_years = fields.Selection(selection="foundation_y", string="Foundation Year")
     total_capacity = fields.Integer(string="Total Capacity")
-    space = fields.Integer()
+    space = fields.Integer(compute="onchange_space")
 
     @api.onchange("total_capacity", "total_member_orphan")
     def onchange_space(self):
-        s = self.total_capacity - self.total_member_orphan
-        self.space = s
+        member = self.env['orphans.member']
+        record = member.search([])
+        val = record.read(['o_organization'])
+
+        list_o = []
+        for i in val:
+            list_o.append(i['o_organization'][0])
+
+        orga_list = list(set(list_o))
+
+        for j in orga_list:
+            count_o = member.search_count([('o_organization', '=', j)])
+            self.search([('id', '=', j)]).write({'total_member_orphan': count_o})
+
+        for rec in self:
+            s = rec.total_capacity - rec.total_member_orphan
+            rec.space = s
 
     def foundation_y(self):
         x = [(str(i), i) for i in range(1990, 2022)]
