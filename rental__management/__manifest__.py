@@ -28,9 +28,8 @@
         'views/views.xml',
         'views/product.xml',
         'views/rentalt.xml',
-
-
-
+        'reports/report_template.xml',
+        'reports/report_actions.xml',
     ],
     'license': 'LGPL-3',
     # only loaded in demonstration mode

@@ -18,7 +18,7 @@
             <group>
             <group>
               <field name="name"/>
-              <field name="customer"/>
+              <field name="customer" context="{'cus_ref':'ref'}"/>
               <field name="rental_type"/>
               <field name="rental_product"/>
             </group>

@@ -20,7 +20,7 @@ class orphans_expense(models.Model):
         record = self.env["orphans.member"]
         active_id = self.env.context.get('active_id')
         member_rec = record.browse(active_id)
-        member = member_rec.read(['name','o_organization'])
+        member = member_rec.read(['name', 'o_organization'])
         expense_class = super(orphans_expense, self).default_get(field)
 
         for data in member:
@@ -29,13 +29,25 @@ class orphans_expense(models.Model):
 
         return expense_class
 
-    @api.onchange("e_amount")
-    def onchange_amount(self):
-        exp_amount = self.e_amount
-        orga_fund = self.od_organization.available_fund
-        amount = orga_fund - exp_amount
-        self.od_organization.available_fund = amount
-        print("=========================", amount)
+    @api.model_create_multi
+    def create(self, val):
+        super_donation = super(orphans_expense, self).create(val)
+
+        for rec in val:
+            expense_amount = rec["e_amount"]
+            # print("=========dd=====\n",donation_amount)
+
+            orga_record = self.env['res.partner']
+            record = orga_record.browse(rec['od_organization'])
+            record_set = record.read(['available_fund'])
+
+            for i in record_set:
+                fund = i['available_fund']
+                amount = fund - expense_amount
+                record.write({'available_fund': amount})
+                # print("=========ffff============",amount)
+
+        return super_donation
 
 
 

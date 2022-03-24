@@ -33,8 +33,6 @@ class rental_management(models.Model):
     def btn_approved(self):
         self.write({'state': 'approve'})
 
-
-
     _sql_constraints = {
         ('name_unique', 'unique(name)', "Name Must Be Unique !")
     }

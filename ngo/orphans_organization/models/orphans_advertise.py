@@ -10,7 +10,7 @@ class orphans_advertise(models.Model):
     dona_organization = fields.Many2one('res.partner', string="Organization Home", required=True, domain=[('ngo_check', '=', True)])
     avl_seats = fields.Integer(string="Available Seats")
     exp_dates = fields.Date(string="Expired Dates", required=True,)
-    facilities = fields.Html(string="Facilities")
+    facilities = fields.Html()
 
     address = fields.Text(compute="read_address")
 
