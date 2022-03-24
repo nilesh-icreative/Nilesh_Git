@@ -59,6 +59,13 @@
                 <field name="foundation_years"/>
               </group>
             </group>
+            <notebook>
+              <page string="Members">
+                <group>
+                  <field name="total_member_orphan"/>
+                </group>
+              </page>
+            </notebook>
           </sheet>
         </form>
       </field>

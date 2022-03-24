@@ -7,7 +7,6 @@ class orphans_donation(models.Model):
     _description = 'orphans_donation'
 
     name = fields.Char(required=True , string="Doner Name")
-    # o_organization = fields.Char(string="Orphans Home")
     o_organization = fields.Many2one('res.partner', required=True, string="Organization Home", domain=[('ngo_check', '=', True)])
     currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
     amount = fields.Integer(string="Amount", required=True)
@@ -42,19 +41,27 @@ class orphans_donation(models.Model):
 
         return val
 
-    @api.onchange("amount")
-    def onchange_amount(self):
-        d_amount = self.amount
-        donation_fund = self.o_organization.available_fund
-        amount = donation_fund + d_amount
-        self.o_organization.available_fund = amount
-        print("=========================", amount)
+    @api.model_create_multi
+    def create(self, val):
+        super_donation = super(orphans_donation, self).create(val)
+
+        for rec in val:
+            donation_amount = rec["amount"]
+            #print("=========dd=====\n",donation_amount)
+
+            orga_record = self.env['res.partner']
+            record = orga_record.browse(rec['o_organization'])
+            record_set = record.read(['available_fund'])
+
+            for i in record_set:
+                fund = i['available_fund']
+                amount = fund + donation_amount
+                record.write({'available_fund': amount})
+                #print("=========ffff============",amount)
+
+        return super_donation
 
     def s_button(self):
         pass
-
-
-
-
 
 
