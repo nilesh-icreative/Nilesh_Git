@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_rental_management" model="ir.actions.report">
+            <field name="name">Donation / Report</field>
+            <field name="model">orphans.organization.donation</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">orphans_organization.report_donation_format</field>
+            <field name="report_file">orphans_organization.report_donation_format</field>
+            <field name="print_report_name">'Donation_Receipt- %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_orphans_organization_donation"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

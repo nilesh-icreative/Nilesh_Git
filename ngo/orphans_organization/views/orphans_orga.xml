@@ -61,9 +61,7 @@
             </group>
             <notebook>
               <page string="Members">
-                <group>
-                  <field name="total_member_orphan"/>
-                </group>
+                <field name="member_list_ids"/>
               </page>
             </notebook>
           </sheet>
@@ -147,6 +145,18 @@
           </kanban>
         </field>
       </record>
-
     </data>
 </odoo>
+
+<!--                <table border="2" width="100%">-->
+<!--                  <tr>-->
+<!--                    <th>Name:</th>-->
+<!--                    <th>Age:</th>-->
+<!--                    <th>Designation:</th>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>1</td>-->
+<!--                    <td>2</td>-->
+<!--                    <td>3</td>-->
+<!--                  </tr>-->
+<!--                </table>-->
