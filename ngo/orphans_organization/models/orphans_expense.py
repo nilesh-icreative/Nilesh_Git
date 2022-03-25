@@ -1,6 +1,6 @@
 
 from odoo import models , fields , api
-
+from odoo.exceptions import ValidationError
 
 class orphans_expense(models.Model):
 
@@ -8,12 +8,16 @@ class orphans_expense(models.Model):
     _description = 'orphans_expense'
 
     name_user = fields.Char(required=True, string="Expense User")
-    #e_type = fields.Selection([('1', 'Fuel'), ('2', 'Food'), ('3', 'Electricity')], string="Expense Type")
-    name = fields.Many2one('expense_type', string="Expense Type")
+    name = fields.Many2one('expense_type', string="Expense Type", required=True)
     currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
     e_amount = fields.Integer(string="Expense Amount", required=True)
     od_organization = fields.Many2one('res.partner', string="Organization Home", required=True)
     notes = fields.Text(string="Notes")
+
+    @api.constrains('e_amount')
+    def amount_check(self):
+        if self.e_amount <= 0:
+            raise ValidationError("Please Enter Amount!")
 
     @api.model
     def default_get(self, field):

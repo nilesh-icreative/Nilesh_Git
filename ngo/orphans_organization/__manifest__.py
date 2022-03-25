@@ -34,6 +34,9 @@
         'views/orphans_advertise.xml',
         'views/orphans_orga.xml',
         'views/expense_type.xml',
+        'reports/donations_report_template.xml',
+        'reports/donation_report_actions.xml',
+
     ],
     # only loaded in demonstration mode
 
