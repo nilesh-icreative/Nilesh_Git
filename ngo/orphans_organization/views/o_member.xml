@@ -78,23 +78,6 @@
     </record>
 
 
-    <!-- orphans Member Action -->
-    <record model="ir.actions.act_window" id="orphans_member_action_window">
-      <field name="name">Orphans Member window</field>
-      <field name="res_model">orphans.member</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-
-    <!-- Manager Request Confirm tree View -->
-
-    <record model="ir.actions.act_window" id="orphans_request_tree_action">
-      <field name="name">Orphans Request window</field>
-      <field name="res_model">orphans.request</field>
-      <field name="view_mode">tree</field>
-      <field name="view_id" ref="orphans_request_tree_view"/>
-    </record>
-
     <!-- Group By Member And Manager -->
 
     <record model='ir.ui.view' id='member_search'>
@@ -116,8 +99,5 @@
     </field>
     </record>
 
-
-    <menuitem name="Orphans member" id="orphans_member_menu" parent="orphans_organization_menu_root"
-              action="orphans_member_action_window" sequence="1"/>
   </data>
 </odoo>

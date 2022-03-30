@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+
+    <!-- actions opening views on models Request Wizard -->
+    <record model="ir.actions.act_window" id="orphans_request_action_window">
+      <field name="name">Orphans Request window</field>
+      <field name="res_model">orphans.request</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+
+    <!-- Organization Donation Button -->
+    <record model="ir.actions.act_window" id="o_donation_action_window">
+      <field name="name">Orphans Donation window</field>
+      <field name="res_model">orphans.organization.donation</field>
+      <field name="view_mode">form</field>
+    </record>
+
+  </data>
+</odoo>

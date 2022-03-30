@@ -4,7 +4,7 @@
                 <t t-call="web.external_layout">
                     <div class="page">
                         <center><h2 style="color:grey"><u>Donation Report</u></h2></center>
-                        <table border="2" width="100%" class="table table-sm o_main_table">
+                        <table border="2" width="100%">
                             <tr align="center"><br/>
                                 <th>Name</th>
                                 <th>Amount</th>

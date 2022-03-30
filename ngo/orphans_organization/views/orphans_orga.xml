@@ -147,16 +147,3 @@
       </record>
     </data>
 </odoo>
-
-<!--                <table border="2" width="100%">-->
-<!--                  <tr>-->
-<!--                    <th>Name:</th>-->
-<!--                    <th>Age:</th>-->
-<!--                    <th>Designation:</th>-->
-<!--                  </tr>-->
-<!--                  <tr>-->
-<!--                    <td>1</td>-->
-<!--                    <td>2</td>-->
-<!--                    <td>3</td>-->
-<!--                  </tr>-->
-<!--                </table>-->

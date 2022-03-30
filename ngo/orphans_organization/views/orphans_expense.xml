@@ -44,21 +44,6 @@
       </field>
     </record>
 
-
-    <!-- actions opening views on models -->
-
-    <record model="ir.actions.act_window" id="orphans_expense_action_window">
-      <field name="name">Orphans Expense window</field>
-      <field name="res_model">orphans.organization.expense</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-
-    <record model="ir.actions.act_window" id="orphans_expense_action_window1">
-      <field name="name">Orphans Expense window</field>
-      <field name="res_model">orphans.organization.expense</field>
-      <field name="view_mode">form</field>
-    </record>
-
     <!-- Group By Expense Type -->
 
     <record model='ir.ui.view' id='expense_group'>
@@ -74,11 +59,6 @@
       </search>
     </field>
     </record>
-
-
-    <menuitem name="Expense" id="orphans_expense_menu" parent="orphans_organization_setting"
-              action="orphans_expense_action_window"/>
-
 
   </data>
 </odoo>

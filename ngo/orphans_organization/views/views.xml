@@ -12,20 +12,5 @@
       <field name="domain">[('ngo_check','=',True)]</field>
     </record>
 
-
-
-    <!-- Top menu item -->
-
-    <menuitem name="NGO" id="orphans_organization_menu_root"/>
-
-    <!-- menu categories -->
-
-
-    <menuitem name="Orphans Organization" id="orphans_organization_menu" parent="orphans_organization_menu_root"
-              action="orphans_organization_action_window"/>
-
-    <menuitem name="Configuration" id="orphans_organization_setting" parent="orphans_organization_menu_root"
-              action="orphans_organization_action_window"/>
-
   </data>
 </odoo>
