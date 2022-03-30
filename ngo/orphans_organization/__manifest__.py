@@ -25,18 +25,24 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/views.xml',
         'views/ngo_bool.xml',
+        'views/views.xml',
         'views/wizards.xml',
-        'views/o_member.xml',
         'views/o_donation.xml',
+        'views/org_sub_action.xml',
+        'views/orphans_orga.xml',
+
+        'views/expense_type.xml',
         'views/orphans_expense.xml',
         'views/orphans_advertise.xml',
-        'views/orphans_orga.xml',
-        'views/expense_type.xml',
+        'views/member_sub_action.xml',
+        'views/o_member.xml',
+
         'reports/donations_report_template.xml',
         'reports/donation_report_actions.xml',
 
+        'views/action.xml',
+        'views/menu_item.xml',
     ],
     # only loaded in demonstration mode
 

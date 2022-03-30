@@ -7,7 +7,7 @@ class ngo(models.Model):
 
     ngo_check = fields.Boolean()
 
-    total_member_orphan = fields.Integer(string="Total Members")
+    total_member_orphan = fields.Integer(string="Total Members", compute="onchange_space")
     currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
     available_fund = fields.Integer(string="Available Funds")
     foundation_years = fields.Selection(selection="foundation_y", string="Foundation Year")

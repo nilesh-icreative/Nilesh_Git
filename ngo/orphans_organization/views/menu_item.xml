@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+
+    <!-- Top menu item -->
+    <menuitem name="NGO" id="orphans_organization_menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Orphans Organization" id="orphans_organization_menu" parent="orphans_organization_menu_root"
+              action="orphans_organization_action_window"/>
+
+    <!-- Orphans Member -->
+    <menuitem name="Orphans member" id="orphans_member_menu" parent="orphans_organization_menu_root"
+              action="orphans_member_action_window"/>
+
+    <!--  Ngo Menu  Advertise -->
+    <menuitem name="Advertise" id="orphans_menu_adv" parent="orphans_organization_menu_root"
+              action="orphans_advertise_action_window"/>
+
+    <!-- Cinfiguration -->
+    <menuitem name="Configuration" id="orphans_organization_setting" parent="orphans_organization_menu_root"
+              action="orphans_organization_action_window"/>
+
+    <!-- Expense Type -->
+    <menuitem name="Expense Type" id="expense_menu" parent="orphans_organization_setting"
+              action="expense_action_window"/>
+
+    <!-- Donation -->
+    <menuitem name="Donation" id="orphans_organization_donation" parent="orphans_organization_setting"
+              action="orphans_donation_action_window"/>
+
+    <!-- Expense Configuration -->
+    <menuitem name="Expense" id="orphans_expense_menu" parent="orphans_organization_setting"
+              action="orphans_expense_action_window"/>
+
+    <!-- Request Configuration -->
+    <menuitem name="Request" id="orphans_request_menu" parent="orphans_organization_setting"
+              action="orphans_request_action_window"/>
+
+  </data>
+</odoo>

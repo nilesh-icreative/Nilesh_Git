@@ -40,7 +40,7 @@ class orphans_donation(models.Model):
     @api.constrains('amount')
     def amount_check(self):
         if self.amount <= 0:
-            raise ValidationError("Invalid Amount!")
+            raise ValidationError("Please Enter Amount!")
 
     @api.onchange("state")
     def check_country(self):

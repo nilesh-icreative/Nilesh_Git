@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+
+    <!-- orphans Member Action Expense Type -->
+    <record model="ir.actions.act_window" id="expense_action_window">
+      <field name="name">Expense window</field>
+      <field name="res_model">expense_type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions opening views on models  donation -->
+    <record model="ir.actions.act_window" id="orphans_donation_action_window">
+      <field name="name">Orphans Donation window</field>
+      <field name="res_model">orphans.organization.donation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- orphans Member Action  -->
+    <record model="ir.actions.act_window" id="orphans_member_action_window">
+      <field name="name">Orphans Member window</field>
+      <field name="res_model">orphans.member</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions opening views on models  -->
+    <record model="ir.actions.act_window" id="orphans_advertise_action_window">
+      <field name="name">Orphans Advertise window</field>
+      <field name="res_model">orphans.advertise</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!--Request Action -->
+    <record model="ir.actions.act_window" id="orphans_request_action_window">
+      <field name="name">Orphans Request window</field>
+      <field name="res_model">orphans.request</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="orphans_expense_action_window">
+      <field name="name">Orphans Expense window</field>
+      <field name="res_model">orphans.organization.expense</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>

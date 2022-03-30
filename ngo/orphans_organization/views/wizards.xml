@@ -75,15 +75,5 @@
     </field>
     </record>
 
-
-    <!-- actions opening views on models -->
-
-    <record model="ir.actions.act_window" id="orphans_request_action_window">
-      <field name="name">Orphans Request window</field>
-      <field name="res_model">orphans.request</field>
-      <field name="view_mode">form</field>
-      <field name="target">new</field>
-    </record>
-
   </data>
 </odoo>
