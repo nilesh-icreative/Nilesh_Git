@@ -11,6 +11,7 @@
             <field name="print_report_name">'Donation_Receipt- %s' % (object.name)</field>
             <field name="binding_model_id" ref="model_orphans_organization_donation"/>
             <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="orphans_organization.paper_format_donation" />
         </record>
     </data>
 </odoo>

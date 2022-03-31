@@ -8,7 +8,7 @@ class orphans_donation(models.Model):
     _name = 'orphans.organization.donation'
     _description = 'orphans_donation'
 
-    name = fields.Char(required=True , string="Doner Name")
+    name = fields.Char(required=True, string="Donor Name")
     o_organization = fields.Many2one('res.partner', required=True, string="Organization Home", domain=[('ngo_check', '=', True)])
     currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
     amount = fields.Integer(string="Amount", required=True)
