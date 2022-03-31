@@ -39,6 +39,7 @@
         'views/o_member.xml',
 
         'reports/donations_report_template.xml',
+        'reports/donation_report_format.xml',
         'reports/donation_report_actions.xml',
 
         'views/action.xml',

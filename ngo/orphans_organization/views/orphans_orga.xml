@@ -41,22 +41,31 @@
             </div>
             <group>
               <group>
-                    <label for="street" string="Address"/>
-                    <div class="o_address_format">
-                        <field name="street" placeholder="Street..." class="o_address_street"/>
-                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
-                        <field name="city" placeholder="City" class="o_address_city"/>
-                        <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
-                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
-                        <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
-                    </div>
-                </group>
+                <label for="street" string="Address"/>
+                <div class="o_address_format">
+                  <field name="street" placeholder="Street..." class="o_address_street"/>
+                  <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                  <field name="city" placeholder="City" class="o_address_city"/>
+                  <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                  <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                  <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                </div>
+              </group>
               <group>
                 <field name="total_member_orphan"/>
                 <field name="currency_id" attrs="{'invisible':1}"/>
                 <field name="available_fund" widget="monetary"/>
                 <field name="total_capacity"/>
                 <field name="foundation_years"/>
+              </group>
+            </group>
+            <group>
+              <group>
+                <field name="website"/>
+              </group>
+              <group>
+                <field name="phone"/>
+                <field name="email"/>
               </group>
             </group>
             <notebook>
@@ -134,7 +143,7 @@
                     </div>
                     <div><p/>
                       <span style='margin-right:1.25em'></span>
-                      <button type="action" name="%(orphans_request_action_window)d" class="btn-primary"><span>Request</span></button>
+                      <button type="action" name="%(orphans_request_action_window1)d" class="btn-primary"><span>Request</span></button>
                       <span style='margin-right:1.25em'></span>
                       <button type="action" name="%(o_donation_action_window)d" class="btn-primary"><span>Donation</span></button>
                     </div>

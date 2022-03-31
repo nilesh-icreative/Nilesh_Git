@@ -1,19 +1,40 @@
 <odoo>
     <template id="report_donation">
+        <div class="header">
+            <div class="row"/>
+        </div>
         <t t-call="web.html_container">
                 <t t-call="web.external_layout">
                     <div class="page">
-                        <center><h2 style="color:grey"><u>Donation Report</u></h2></center>
-                        <table border="2" width="100%">
-                            <tr align="center"><br/>
-                                <th>Name</th>
-                                <th>Amount</th>
-                            </tr>
-                            <tr>
-                                <td><span t-field="doc.name"/></td>
-                                <td>₹<span t-field="doc.amount"/></td>
-                            </tr>
-                        </table>
+                        <div name="image" class="float-left">
+                            <img alt="Avatar" style="height:35mm; width=35mm;" t-att-src="image_data_uri(doc.o_organization.image_1920)"/>
+                        </div><br/>
+                        <p align="right">
+                        <span t-field="doc.o_organization.street"/><br/>
+                        <span t-field="doc.o_organization.street2"/><br/>
+                        <span t-field="doc.o_organization.city"/>
+                        <span t-field="doc.o_organization.state_id"/>
+                        <span t-field="doc.o_organization.zip"/><br/>
+                        <span t-field="doc.o_organization.country_id"/>
+                        </p>
+                        <h2 style="color:grey" align="center"><i><u><span t-field="doc.o_organization"/></u></i></h2>
+                        <p><br/>
+                            Thank You For Your Donation <b><span t-field="doc.name"/></b> .
+                            Your contribution will enable us to provide the best education and a loving family.<br/>
+                            A place where children can grow with a strong sense of identity and belonging.
+                            Sponsor A Child.
+                        </p><br/>
+                        <b>Donor Name:  </b><span t-field="doc.name"/><br/>
+                        <b>Amount:</b>  ₹<span t-field="doc.amount"/><br/>
+                        <b>Date:</b> <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                        <div class="footer">
+                            <div class="text-center" style="border-top: 1px solid black;">
+                                Phone: <span t-field="doc.o_organization.phone"/> |
+                                Email: <span t-field="doc.o_organization.email"/> |
+                                Website: <span t-field="doc.o_organization.website"/> |
+                                Page: <span class="page"/>
+                            </div>
+                        </div>
                     </div>
                 </t>
             </t>
