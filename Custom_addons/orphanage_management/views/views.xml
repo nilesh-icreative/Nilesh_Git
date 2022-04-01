@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+
+     <record model="ir.ui.view" id="orphanage_management.form_list">
+      <field name="name">organization Form list</field>
+      <field name="model">orphanage_management.organization</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+                <field name="name"/>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="orphanage_management.list">
+      <field name="name">organization list</field>
+      <field name="model">orphanage_management.organization</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="orphanage_management.action_window" >
+      <field name="name">organization window</field>
+      <field name="res_model">orphanage_management.organization</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+<!--     server action to the one above-->
+
+    <record model="ir.actions.server" id="orphanage_management.action_server">
+      <field name="name">organization server</field>
+      <field name="model_id" ref="model_orphanage_management_organization"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="NGO" id="orphanage_management.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="orphanage_management.menu_1" parent="orphanage_management.menu_root"/>
+    <menuitem name="Menu 2" id="orphanage_management.menu_2" parent="orphanage_management.menu_root"/>
+
+
+    <menuitem name="List" id="orphanage_management.menu_1_list" parent="orphanage_management.menu_1"
+              action="orphanage_management.action_window"/>
+    <menuitem name="Server to list" id="employee" parent="orphanage_management.menu_2"
+              action="orphanage_management.action_server"/>
+
+  </data>
+</odoo>

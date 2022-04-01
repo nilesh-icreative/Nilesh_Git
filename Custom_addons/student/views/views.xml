@@ -1,0 +1,61 @@
+<odoo>
+  <data>
+    <!-- explicit list view  student definition -->
+
+    <record model="ir.ui.view" id="student_form">
+      <field name="name">Student Form</field>
+      <field name="model">student</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="r_no"/>
+              <field name="email"/>
+            </group>
+            <group>
+              <field name="f_name"/>
+              <field name="l_name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit Tree view  student definition -->
+
+    <record model="ir.ui.view" id="student_list">
+      <field name="name">Student list</field>
+      <field name="model">student</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="r_no"/>
+          <field name="email"/>
+          <field name="f_name"/>
+          <field name="l_name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="student_action_window">
+      <field name="name">Student window</field>
+      <field name="res_model">student</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+    <menuitem name="Student" id="student_menu_root"/>
+
+    <!-- menu categories -->
+
+
+    <!-- actions -->
+
+    <menuitem name="Student  List" id="student_menu_1_list" parent="student_menu_root"
+              action="student_action_window"/>
+
+  </data>
+</odoo>
