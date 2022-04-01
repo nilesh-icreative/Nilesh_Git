@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_rental_management" model="ir.actions.report">
+            <field name="name">Rental Management</field>
+            <field name="model">rental.management</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">rental__management.report_rental_format</field>
+            <field name="report_file">rental__management.report_rental_format</field>
+            <field name="print_report_name">'PRO-FORMA - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_rental_management"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="rental__management.paper_format_rental" />
+        </record>
+    </data>
+</odoo>

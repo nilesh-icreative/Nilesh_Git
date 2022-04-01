@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+    <!-- explicit list view orphans definition -->
+
+    <record model="ir.ui.view" id="orm_wizard_form">
+      <field name="name">Orm Wizard form</field>
+      <field name="model">ormw</field>
+      <field name="arch" type="xml">
+        <form>
+          <div class="oe_button_box" name="button_box">
+              <button name="btn_orm" type="object"  icon="fa-smile-o icon">
+                <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Orm</span>
+                  <span class="o_stat_text">Preview</span>
+                </div>
+              </button>
+          </div>
+          <group>
+            <field name="name"/>
+            <field name="salary"/>
+          </group>
+
+          <footer>
+            <button class="btn-primary" string="save"/>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="orm_wizard_action_window">
+      <field name="name">Orm Wizard window</field>
+      <field name="res_model">ormw</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+
+    <menuitem name="ORM WIZARDS" id="orm_w" parent="orm_menu_root" action="orm_wizard_action_window"/>
+
+  </data>
+</odoo>

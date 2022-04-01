@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+
+    <!--- Add Tag in Res Partner -->
+    <record id="res_partner_add_tag_best_customer" model="res.partner.category">
+      <field name="name">Best Customer</field>
+      <field name="color" eval="2"/>
+    </record>
+  </data>
+</odoo>

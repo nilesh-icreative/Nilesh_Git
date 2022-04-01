@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <template id="sale_details_page" name="sale List">
+      <t t-call="website.layout">
+      <center><h2>Sale Order List</h2></center>
+        <t t-foreach="details" t-as="sale">
+          <table border="1" width="90%">
+            <tr>
+              <th>Name</th>
+            </tr>
+            <tr>
+              <td><span t-esc="sale.name"/></td>
+            </tr>
+          </table>
+        </t>
+      </t>
+    </template>
+  </data>
+</odoo>

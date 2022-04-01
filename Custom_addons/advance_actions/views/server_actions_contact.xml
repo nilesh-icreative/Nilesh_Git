@@ -1,0 +1,33 @@
+<odoo>
+  <data>
+    <!-- Server Actions in Contact Update Record -->
+
+    <record model="ir.actions.server" id="demo_action_server">
+      <field name="name">Demo Server Action</field>
+      <field name="model_id" ref="base.model_res_partner"/>
+      <field name="state">code</field>
+      <field name="code">
+        record.write({
+        'name' : 'Nilesh',
+        'phone' : '8511430607',
+        'email' : 'Vnil@gmail.com'
+        })
+      </field>
+    </record>
+    <!-- Server Actions Create Record in Contacts -->
+
+    <record model="ir.actions.server" id="demo_action_create_server">
+      <field name="name">Demo Server Action 2</field>
+      <field name="model_id" ref="base.model_res_partner"/>
+      <field name="state">code</field>
+      <field name="code">
+        record.create({
+        'name' : 'Nilesh',
+        'phone' : '8511430607',
+        'email' : 'Vnil@gmail.com'
+        })
+      </field>
+    </record>
+
+  </data>
+</odoo>
