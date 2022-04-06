@@ -1,0 +1,50 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="contacts_wizard_form">
+      <field name="name">Contacts Wizard form</field>
+      <field name="model">contacts_action</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="product_ids" widget="many2many_tags"/>
+            </group>
+            <group>
+              <field name="quantity" string="Qty"/>
+              <field name="price" string="Unit Price"/>
+            </group>
+          </sheet>
+          <footer>
+            <button name="order_create" type="object"  string="Create" class="btn-primary"/>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.server" id="sale_action_server">
+      <field name="name">So Creation</field>
+      <field name="model_id" ref="base.model_res_partner"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "name" : "Wizard Window",
+          "type": "ir.actions.act_window",
+          "view_mode": "form",
+          "res_model": "contacts_action",
+          "target": "new",
+          "context": {"act_id":record.id}
+        }
+      </field>
+    </record>
+
+<!--    <record model="ir.actions.act_window" id="contacts_wizard_action_window">-->
+<!--      <field name="name">Contacts Wizard window</field>-->
+<!--      <field name="res_model">contacts_action</field>-->
+<!--      <field name="view_mode">form</field>-->
+<!--      <field name="target">new</field>-->
+<!--    </record>-->
+  </data>
+</odoo>
