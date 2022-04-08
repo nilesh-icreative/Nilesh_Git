@@ -2,18 +2,20 @@
 <odoo>
   <data>
 
-    <record model="ir.ui.view" id="contacts_wizard_form">
-      <field name="name">Contacts Wizard form</field>
-      <field name="model">contacts_action</field>
+    <record model="ir.ui.view" id="sale_line_wizard_form">
+      <field name="name">Product Wizard form</field>
+      <field name="model">sale_order_wizard</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
             <group>
-              <field name="product_ids" widget="many2many_tags"/>
-            </group>
-            <group>
-              <field name="quantity" string="Qty"/>
-              <field name="price" string="Unit Price"/>
+            <field name="sale_order_line">
+            <tree editable="bottom">
+              <field name="product_id"/>
+              <field name="quantity"/>
+              <field name="price"/>
+            </tree>
+            </field>
             </group>
           </sheet>
           <footer>
@@ -33,18 +35,12 @@
           "name" : "Wizard Window",
           "type": "ir.actions.act_window",
           "view_mode": "form",
-          "res_model": "contacts_action",
+          "res_model": "sale_order_wizard",
           "target": "new",
-          "context": {"act_id":record.id}
+          "context": {"act_id":records.ids}
         }
       </field>
     </record>
 
-<!--    <record model="ir.actions.act_window" id="contacts_wizard_action_window">-->
-<!--      <field name="name">Contacts Wizard window</field>-->
-<!--      <field name="res_model">contacts_action</field>-->
-<!--      <field name="view_mode">form</field>-->
-<!--      <field name="target">new</field>-->
-<!--    </record>-->
   </data>
 </odoo>

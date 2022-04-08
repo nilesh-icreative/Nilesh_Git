@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('settings')]" position="inside">
                 <div class="app_settings_block" data-string="custom module" string="Odoo Exam" data-key="setting">
+<!--                    web_icon = "exam_2,static/description/icon.png"-->
                     <h2>Boolean Check</h2>
                     <div class="row mt16 o_settings_container">
                         <div class="col-12 col-lg-6 o_setting_box">
@@ -18,7 +19,7 @@
                             <div>
                                 <br/><br/>
                                 <span><b>Sale Order</b></span>
-                                <field name="sale_order_details"/>
+                                <field name="sale_order_details_ids"/>
                             </div>
                         </div>
                     </div>
