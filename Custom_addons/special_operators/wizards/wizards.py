@@ -14,6 +14,7 @@ class sale_wizard(models.TransientModel):
         active_id = self.env.context.get('active_id')
         record = sale_dataset.browse(active_id)
 
+
         for product in self.product_ids:
             print("==============", product, product.id)
             record.write({'order_line': [(4, product.id)]})

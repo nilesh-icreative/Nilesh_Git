@@ -1,0 +1,31 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="employee_wizard_form">
+            <field name="name">Employees Wizard form</field>
+            <field name="model">employees</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="name"/>
+                    </sheet>
+                    <footer>
+                        <button string="Create" class="btn-primary"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employees_wizard_action_window">
+            <field name="name">Employees Wizard window</field>
+            <field name="res_model">employees</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+<!--            <menuitem name="Employee Timesheet Report" id="employees_menu" parent="	hr.menu_hr_reporting_timesheet"-->
+<!--              action="employee_action_server"/>-->
+        </record>
+
+    </data>
+</odoo>
