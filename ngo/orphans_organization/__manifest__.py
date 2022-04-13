@@ -47,6 +47,6 @@
     ],
     # only loaded in demonstration mode
 
-    'license':'LGPL-3',
+    'license': 'LGPL-3',
 
 }
