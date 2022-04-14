@@ -28,6 +28,7 @@
           <group>
             <field name="phone" />
             <field name="email" widget="email"/>
+            <button name="report_donation" type="object" string="Report" class="btn-primary"/>
           </group>
         </group>
 

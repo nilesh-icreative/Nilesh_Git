@@ -2,6 +2,10 @@
 from odoo import models , fields , api
 from odoo.exceptions import ValidationError
 import re
+from odoo.tools.misc import xlwt
+from xlwt import easyxf
+from io import BytesIO
+import base64
 
 class orphans_donation(models.Model):
 
@@ -22,6 +26,7 @@ class orphans_donation(models.Model):
     zip = fields.Char()
     country = fields.Many2one('res.country')
 
+    excel_file = fields.Binary()
     @api.constrains('phone')
     def phone_check(self):
         for rec in self:
@@ -85,4 +90,76 @@ class orphans_donation(models.Model):
     def s_button(self):
         pass
 
+    def report_donation(self):
+        print("===Hello==")
 
+        organization_set = self.env['orphans.organization.donation'].search([])
+        print('=======\n\n', organization_set)
+
+        total = 0
+        for rec in organization_set:
+            total += rec.amount
+
+        print("===============", total)
+
+        filename = 'Timesheet.xls'
+
+        workbook = xlwt.Workbook()
+
+        worksheet = workbook.add_sheet('Donation Report')
+
+        header_style = easyxf('font:height 500; align:horiz center;'
+                              ' font:bold True;')
+
+        # Row1 = 5
+        # Row2 = 6
+        # Col1 = 1
+        # Col2 = 5
+        #
+        # worksheet.col(1).width = 256 * 20
+        # # worksheet.col(2).width = 256 * 25
+        # # worksheet.col(3).width = 256 * 25
+        # # worksheet.col(4).width = 256 * 25
+        #
+        # worksheet.write_merge(Row1, Row2, Col1, Col2,
+        #                       "Timesheet", header_style)
+        font = easyxf('align: horiz center;font:bold True;')
+
+        worksheet.col(0).width = 3000
+        Row = 2
+        Col = 1
+        worksheet.write(Row, Col, 'Donor Name', font)
+        # Col += 1
+        # worksheet.write(Row, Col, 'Organization', font)
+        # Col += 1
+        # worksheet.write(Row, Col, 'Phone No', font)
+        # Col += 1
+        # worksheet.write(Row, Col, 'Amount', font)
+
+        for rec in organization_set:
+            Row += 1
+            worksheet.write(Row, 1, rec.name)
+            # worksheet.write(Row, 2, rec.o_organization)
+            # worksheet.write(Row, 3, rec.phone)
+            # worksheet.write(Row, 4, rec.amount)
+
+        fp = BytesIO()
+
+        workbook.save(fp)
+
+        fp.seek(0)
+
+        excel_file = base64.encodebytes(fp.getvalue())
+
+        fp.close()
+
+        self.write({'excel_file': excel_file})
+
+        url = ('web/content/?model=orphans.organization.donation&download=true&'
+               'field=excel_file&id=%s&filename=%s'
+               % (self.id, filename))
+
+        if self.excel_file:
+            return {'type': 'ir.actions.act_url',
+                    'url': url,
+                    'target': 'new'}
