@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import models
 
 
 class Sale_order_mail(models.Model):
@@ -10,7 +10,8 @@ class Sale_order_mail(models.Model):
         """ Send Mail Sale Order """
         print("======Hello========")
 
-        template_id = self.env.ref('email_template.email_template_sale_order').id
+        template_id = self.env.ref(
+            'email_template.email_template_sale_order').id
         print("=======template id=======\n\n", template_id)
 
         template = self.env['mail.template'].browse(template_id)

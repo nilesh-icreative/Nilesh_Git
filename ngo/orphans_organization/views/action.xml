@@ -31,6 +31,14 @@
     </record>
 
     <!--Request Action -->
+    <record model="ir.actions.act_window" id="organization_report_action">
+      <field name="name">Reports</field>
+      <field name="res_model">reports</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+
+    <!--Request Action -->
     <record model="ir.actions.act_window" id="orphans_request_action_window">
       <field name="name">Orphans Request window</field>
       <field name="res_model">orphans.request</field>

@@ -28,6 +28,7 @@
                         <b>Amount:</b>  ₹<span t-field="doc.amount"/><br/>
                         <b>Date:</b> <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
                     </div>
+                    Page: <span class="page"/>
                     <div class="footer">
                         <div class="text-center" style="border-top: 1px solid black;">
                             Phone: <span t-field="doc.o_organization.phone"/> |

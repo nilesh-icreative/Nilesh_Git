@@ -2,14 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e157fad-0f03-48e3-b371-a7e29d537bfc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/orphans_organization/models/reports.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/orphans_organization/views/reports.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../v_15_project/advance_actions/.idea/advance_actions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orphans_organization/models/orphans_donation.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/orphans_donation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/reports/donations_report_template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/reports/donations_report_template.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/views/action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/views/menu_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/menu_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orphans_organization/views/o_donation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/o_donation.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -24,7 +40,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/odoo/workspace/projects/ngo"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/odoo/PycharmProjects/v_15/excel_report"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -37,5 +54,16 @@
       <updated>1646713530151</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
