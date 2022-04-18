@@ -1,13 +1,27 @@
-from odoo import models, fields
+from odoo import models
 
 
-class Account_Move_Line(models.Model):
-    """ Inherit Object"""
+class Account_Move(models.Model):
+    """ Inherit Object Account Move"""
 
-    _inherit = 'account.move.line'
+    _inherit = 'account.move'
 
-    vendor_id = fields.Many2one(comodel_name='res.partner', string="Vendor",
-                                domain=[('customer_rank', '>', 0)])
+    def bill_generate(self):
+        """ Generate Bills"""
 
-    delivery_address_id = fields.Many2one(comodel_name='res.partner', string="Delivery",
-                                          domain=[('type', '=', 'delivery')])
+        vendor_list = []
+        for rec in self.invoice_line_ids:
+            if rec.vendor_id.id not in vendor_list:
+                vendor_list.append(rec.vendor_id.id)
+
+            # for product in rec:
+            #     print("==================\n\n", rec.id, product.name, product.quantity,
+            #           product.price_unit, product.price_subtotal, product.delivery_address_id.name,
+            #           product.description)
+
+        for rec in vendor_list:
+            self.create([{
+                'move_type': 'in_invoice',
+                'partner_id': rec,
+            }])
+
