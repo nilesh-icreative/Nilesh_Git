@@ -9,19 +9,26 @@ class Account_Move(models.Model):
     def bill_generate(self):
         """ Generate Bills"""
 
-        vendor_list = []
-        for rec in self.invoice_line_ids:
-            if rec.vendor_id.id not in vendor_list:
-                vendor_list.append(rec.vendor_id.id)
+        vendor_ids = self.invoice_line_ids.mapped("vendor_id.id")
+        #print("====================\n\n", vendor_ids)
 
-            # for product in rec:
-            #     print("==================\n\n", rec.id, product.name, product.quantity,
-            #           product.price_unit, product.price_subtotal, product.delivery_address_id.name,
-            #           product.description)
+        for vendor_id in vendor_ids:
+            record_list = []
 
-        for rec in vendor_list:
-            self.create([{
+            for line in self.invoice_line_ids.filtered(lambda x: x.vendor_id.id == vendor_id):
+                record_list.append((0, 0, {
+                    "product_id": line.product_id.id,
+                    "name": line.name,
+                    "quantity": line.quantity,
+                    "price_unit": line.price_unit,
+                    "price_subtotal": line.price_subtotal,
+                    "delivery_address_id": line.delivery_address_id,
+                    "description": line.description,
+                }))
+
+            self.create({
                 'move_type': 'in_invoice',
-                'partner_id': rec,
-            }])
+                'partner_id': vendor_id,
+                'invoice_line_ids': record_list,
 
+            })

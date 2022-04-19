@@ -9,9 +9,9 @@
           <p align="center">
           <button name="organization_report_donation" type="object" string="Donation Report" class="btn-primary"/>
           <span style='margin-right:1.25em'></span>
-          <button string="Expense Report" class="btn-primary"/>
+          <button name="organization_report_expense" type="object" string="Expense Report" class="btn-primary"/>
           <span style='margin-right:1.25em'></span>
-          <button string="Profit Report" class="btn-primary"/>
+          <button name="organization_report_profit" type="object" string="Profit Report" class="btn-primary"/>
           </p>
           <footer>
             <button string="Cancel" special="cancel"/>
