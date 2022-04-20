@@ -77,7 +77,6 @@
       </field>
     </record>
 
-
     <!-- Group By Member And Manager -->
 
     <record model='ir.ui.view' id='member_search'>

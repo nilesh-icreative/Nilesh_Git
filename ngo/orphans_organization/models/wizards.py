@@ -48,7 +48,6 @@ class orphans_request(models.TransientModel):
                 today = date.today()
                 i.age = today.year - i.dob.year - ((today.month - today.day) < (i.dob.month - i.dob.day))
 
-
     def val_age(self):
         if int(self.age) > 18:
             raise ValidationError("Age Must Be Below 18 !")
