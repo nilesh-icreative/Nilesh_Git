@@ -28,7 +28,7 @@ class orphans_donation(models.Model):
     def phone_check(self):
         for rec in self:
             if rec.phone and len(rec.phone) != 10:
-                raise ValidationError("Must Be 10 Digits!")
+                raise ValidationError("Phone No Must Be 10 Digits!")
             elif(rec.phone and not str(rec.phone).isdigit()):
                 raise ValidationError("Only Enter Number!")
 
