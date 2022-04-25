@@ -2,9 +2,12 @@
   <data>
 
     <template id="contacts_details_page" name="Contacts Page">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/controller_task/static/src/css/contacts_details.css"/>
+      </xpath>
       <t t-call="website.layout">
         <center><u><i><h2>Contacts List</h2></i></u></center>
-        <table style="width:80%" border="2" align="center">
+        <table style="width:80%" align="center">
           <tr align="center">
             <th>Name</th>
             <th>Phone</th>
@@ -13,7 +16,11 @@
           </tr>
           <t t-foreach="details" t-as="con">
             <tr>
-              <td><span t-esc="con.name"/></td>
+              <td>
+                <a t-attf-href="/contacts_details/{{ slug(con)}}">
+                  <span t-esc="con.name"/>
+                </a>
+              </td>
               <td><span t-esc="con.phone"/></td>
               <td><span t-esc="con.email"/></td>
               <td align="center">

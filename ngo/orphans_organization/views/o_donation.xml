@@ -58,7 +58,8 @@
         <tree>
             <field name="name"/>
             <field name="o_organization"/>
-            <field name="amount"/>
+            <field name="currency_id" attrs="{'column_invisible':1}"/>
+            <field name="amount" widget="monetary" sum="Total"/>
             <field name="phone" optional="hide"/>
             <field name="email" optional="hide"/>
         </tree>

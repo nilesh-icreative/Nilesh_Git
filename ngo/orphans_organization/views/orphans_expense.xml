@@ -38,7 +38,7 @@
             <field name="name"/>
             <field name="od_organization"/>
             <field name="currency_id" attrs="{'column_invisible':1}"/>
-            <field name="e_amount" widget="monetary"/>
+            <field name="e_amount" widget="monetary" sum="Total"/>
             <field name="notes" optional="hide"/>
         </tree>
       </field>

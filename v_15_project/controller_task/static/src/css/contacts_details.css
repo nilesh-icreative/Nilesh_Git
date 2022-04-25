@@ -1,0 +1,10 @@
+h2 {
+    color: red;
+    text-style: time;
+}
+
+table {
+    border: double;
+    border-width: 5px;
+
+}
