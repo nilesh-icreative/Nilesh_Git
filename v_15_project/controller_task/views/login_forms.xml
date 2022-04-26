@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+
+    <template id="login_forms_page" name="Login Page">
+      <t t-call="website.layout"><br></br>
+        <div class="container">
+
+        <form border="2" autocomplate="off">
+          <h2><u><i>Login Forms</i></u></h2><br/>
+          <label>Enter User Name:</label>
+          <input type="text" id="uname" name="uname"/><br/><br/>
+          <label>Enter Password:</label>
+          <input type="password" id="pass" name="pass"/><br/><br/>
+          <input class="btn-primary" type="submit" name="submit" value="Submit"/><br/><br/>
+        </form>
+        </div>
+
+      </t>
+    </template>
+
+  </data>
+</odoo>

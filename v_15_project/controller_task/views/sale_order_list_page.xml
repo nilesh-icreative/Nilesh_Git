@@ -7,7 +7,7 @@
       </xpath>
       <t t-call="website.layout">
         <center><u><i><h2>Contacts List</h2></i></u></center>
-        <table style="width:80%" align="center">
+        <table style="width:80%" align="center" border="5px">
           <tr align="center">
             <th>Name</th>
             <th>Phone</th>

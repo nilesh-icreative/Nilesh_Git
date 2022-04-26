@@ -314,7 +314,7 @@ class Organization_Reports(models.TransientModel):
             worksheet.write_merge(Row, Row, 3, 3, "Expense User", col_name)
             worksheet.write_merge(Row, Row, 4, 4, "Expense Type", col_name)
             worksheet.write_merge(Row, Row, 5, 6, "Amount", col_name)
-            Row += 2
+            Row += 1
 
             for expense_record in expense_record_set:
                 worksheet.write(Row, 3, expense_record.name_user, col_data)
@@ -324,6 +324,7 @@ class Organization_Reports(models.TransientModel):
                 total_amount_expense += expense_record.e_amount
                 Row += 1
 
+            Row += 1
             worksheet.write_merge(Row, Row, 3, 6, "Expense Amount: {}".format(total_amount_expense), col_name)
 
             profit_amount = total_amount_donation - total_amount_expense

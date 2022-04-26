@@ -96,17 +96,17 @@
       </field>
     </record>
 
-    <!-- Graph View -->
-    <record model="ir.ui.view" id="o_organization_graph">
-      <field name="name">Orphans Graph</field>
-      <field name="model">res.partner</field>
-      <field name="arch" type="xml">
-        <graph string="Ngo">
-          <field name="name"  type="row"/>
-          <field name="available_fund" type="measure"/>
-        </graph>
-      </field>
-    </record>
+<!--    &lt;!&ndash; Graph View &ndash;&gt;-->
+<!--    <record model="ir.ui.view" id="o_organization_graph">-->
+<!--      <field name="name">Orphans Graph</field>-->
+<!--      <field name="model">res.partner</field>-->
+<!--      <field name="arch" type="xml">-->
+<!--        <graph string="Ngo">-->
+<!--          <field name="name"  type="row"/>-->
+<!--          <field name="available_fund" type="measure"/>-->
+<!--        </graph>-->
+<!--      </field>-->
+<!--    </record>-->
 
     <!-- Organization Kanban View -->
 

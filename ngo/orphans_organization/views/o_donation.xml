@@ -66,5 +66,17 @@
       </field>
     </record>
 
+    <!-- Graph View -->
+    <record model="ir.ui.view" id="donation_organization_graph">
+      <field name="name">Donation Graph</field>
+      <field name="model">orphans.organization.donation</field>
+      <field name="arch" type="xml">
+        <graph string="Ngo">
+          <field name="o_organization"  type="row"/>
+          <field name="amount" type="measure"/>
+        </graph>
+      </field>
+    </record>
+
   </data>
 </odoo>

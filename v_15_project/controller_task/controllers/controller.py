@@ -4,6 +4,7 @@ from odoo.http import request
 
 class Contacts(http.Controller):
     """ Controllers display  Contacts Details"""
+
     @http.route(['/contacts_details'], type='http', auth='public',
                 website=True)
     def contacts_details(self, **kw):
@@ -21,3 +22,4 @@ class Contacts(http.Controller):
                                    {
                                        'con': con
                                    })
+

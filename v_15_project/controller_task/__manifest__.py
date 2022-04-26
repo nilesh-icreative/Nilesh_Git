@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/sale_order_list_page.xml',
+        'views/login_forms.xml',
     ],
     'license': 'LGPL-3',
 }
