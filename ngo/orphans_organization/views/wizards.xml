@@ -33,6 +33,11 @@
                 </div>
             </group>
           </group>
+          <group>
+            <group>
+              <field name="orphans_email" widget="email"/>
+            </group>
+          </group>
 
           <footer>
             <button name="val_age" class="btn-primary" string="Send" type="object"/>

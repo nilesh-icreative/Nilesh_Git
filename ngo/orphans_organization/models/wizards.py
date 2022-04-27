@@ -3,7 +3,7 @@
 from odoo import models , fields , api
 from odoo.exceptions import ValidationError
 from datetime import *
-
+import re
 
 class orphans_request(models.TransientModel):
 
@@ -27,6 +27,8 @@ class orphans_request(models.TransientModel):
 
     status = fields.Selection([('req', 'Request Sent'), ('apr', 'Approved')], default="req")
 
+    orphans_email = fields.Char(string='Email', required=True, default="")
+
     @api.model
     def default_get(self, field):
         record = self.env['res.partner']
@@ -48,9 +50,18 @@ class orphans_request(models.TransientModel):
                 today = date.today()
                 i.age = today.year - i.dob.year - ((today.month - today.day) < (i.dob.month - i.dob.day))
 
+    @api.constrains('orphans_email')
+    def email_check(self):
+        if self.orphans_email:
+            match = re.match('^[_a-z]+[0-9-]*(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.orphans_email)
+            if match == None:
+                raise ValidationError("Not a Valid Email")
+
     def val_age(self):
         if int(self.age) > 18:
             raise ValidationError("Age Must Be Below 18 !")
+        elif int(self.age) <= 0:
+            raise ValidationError("Age Must Be More Than 0 !")
 
     @api.onchange("state1")
     def check_country(self):
@@ -59,6 +70,19 @@ class orphans_request(models.TransientModel):
                 rec.country = rec.state1.country_id
 
     def create_rec(self):
+
+        # Send Mail to Request User
+
+        template_id = self.env.ref(
+            'orphans_organization.email_template_request_user').id
+        # print("=======template id=======\n\n", template_id)
+
+        template = self.env['mail.template'].browse(template_id)
+        # print("======template===\n\n", template)
+
+        template.send_mail(self.id, force_send=True)
+        # print("=========================send")
+
         member = self.env['orphans.member']
 
         for rec in self:

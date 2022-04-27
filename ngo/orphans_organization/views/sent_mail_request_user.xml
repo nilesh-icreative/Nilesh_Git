@@ -1,0 +1,25 @@
+<odoo>
+  <data>
+
+    <record id="email_template_request_user" model="mail.template">
+      <field name="name">Email Template</field>
+      <field name="model_id" ref="orphans_organization.model_orphans_request"/>
+        <field name="email_from">nileshicreative@gmail.com</field>
+        <field name="email_to">{{object.orphans_email}}</field>
+        <field name="subject">Orphan Organization Home Request Approved</field>
+        <field name="body_html" type="html">
+        <h2 align="center">Certificate of Adoption</h2>
+          <h5 align="center">This is to certify that</h5>
+          <h3 align="center"><t t-esc="object.name"/></h3>
+          <h4 align="center">has been adopted into Family</h4>
+          <h4 align="center">from <u><t t-esc="object.o_organization.name"/></u> of Home Orphanage.</h4>
+<!--          <div>-->
+<!--             <img alt="Avatar" style="height:35mm; width=35mm;" src="orphans_organization/static/src/home.jpg"/>-->
+<!--          </div><br/>-->
+<!--          <p> <img src="data:image/*;base64,${object.o_organization.image_1920}"-->
+<!--                   style="width: 150px;height: 80px;" /> </p>-->
+      </field>
+    </record>
+
+  </data>
+</odoo>

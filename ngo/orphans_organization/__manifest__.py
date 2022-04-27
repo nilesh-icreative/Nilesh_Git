@@ -20,7 +20,7 @@
     'version': '15.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
 
     # always loaded
     'data': [
@@ -29,6 +29,7 @@
         'views/ngo_bool.xml',
         'views/views.xml',
         'views/wizards.xml',
+        'views/sent_mail_request_user.xml',
         'views/o_donation.xml',
         'views/org_sub_action.xml',
         'views/orphans_orga.xml',
