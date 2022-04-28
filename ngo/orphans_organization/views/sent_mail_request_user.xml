@@ -8,17 +8,23 @@
         <field name="email_to">{{object.orphans_email}}</field>
         <field name="subject">Orphan Organization Home Request Approved</field>
         <field name="body_html" type="html">
-        <h2 align="center">Certificate of Adoption</h2>
-          <h5 align="center">This is to certify that</h5>
-          <h3 align="center"><t t-esc="object.name"/></h3>
-          <h4 align="center">has been adopted into Family</h4>
-          <h4 align="center">from <u><t t-esc="object.o_organization.name"/></u> of Home Orphanage.</h4>
-<!--          <div>-->
-<!--             <img alt="Avatar" style="height:35mm; width=35mm;" src="orphans_organization/static/src/home.jpg"/>-->
-<!--          </div><br/>-->
-<!--          <p> <img src="data:image/*;base64,${object.o_organization.image_1920}"-->
-<!--                   style="width: 150px;height: 80px;" /> </p>-->
-      </field>
+        <h2 style="background-color: coral;" align="center">Certificate of Adoption</h2>
+          <div style="background-color: orange;"><br/>
+            <h5 align="center">This is to certify that</h5>
+            <h3 align="center"><t t-esc="object.name"/></h3>
+            <h4 align="center">has been adopted into Family</h4>
+            <h4 align="center">from <u><t t-esc="object.o_organization.name"/></u> of Home Orphanage.</h4>
+<!--            <p align="center">-->
+<!--            <img alt="Avatar" style="height:15mm; width=15mm;-->
+<!--              border-radius: 90px;" t-attf-src="data:image/*;base64,{{object.o_organization.image_1920}}"/>-->
+<!--            </p>-->
+
+            <br/>
+            <b>Date:<t t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/></b><br/>
+            <b>Contacts No: <t t-esc="object.o_organization.phone"/></b><br/>
+            <b>Email: <t t-esc="object.o_organization.email"/></b><br/>
+          </div>
+        </field>
     </record>
 
   </data>

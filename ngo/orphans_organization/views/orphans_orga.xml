@@ -71,7 +71,7 @@
             </group>
             <notebook>
               <page string="Members">
-                <field name="member_list_ids"/>
+                <field name="member_list_ids" limit="5"/>
               </page>
             </notebook>
           </sheet>

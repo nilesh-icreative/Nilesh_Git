@@ -14,7 +14,7 @@ class ngo(models.Model):
     total_capacity = fields.Integer(string="Total Capacity")
     space = fields.Integer(compute="onchange_space")
 
-    member_list_ids = fields.One2many('orphans.member', 'o_organization')
+    member_list_ids = fields.One2many('orphans.member', 'o_organization', limit=5)
 
     @api.onchange("total_capacity", "total_member_orphan")
     def onchange_space(self):

@@ -22,4 +22,3 @@ class Contacts(http.Controller):
                                    {
                                        'con': con
                                    })
-
