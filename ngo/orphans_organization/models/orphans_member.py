@@ -34,8 +34,3 @@ class orphans_member(models.Model):
         if self.state:
             for rec in self:
                 rec.country = rec.state.country_id
-
-
-
-
-

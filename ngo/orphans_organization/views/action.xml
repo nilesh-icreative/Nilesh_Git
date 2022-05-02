@@ -21,6 +21,7 @@
       <field name="name">Orphans Member window</field>
       <field name="res_model">orphans.member</field>
       <field name="view_mode">tree,form</field>
+      <field name="context">{'act_id':'o_organization'}</field>
     </record>
 
     <!-- actions opening views on models  -->

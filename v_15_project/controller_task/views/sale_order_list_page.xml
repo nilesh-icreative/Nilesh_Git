@@ -61,5 +61,26 @@
       </t>
     </template>
 
+<!--    <template id="portal_my_home_menu_contacts" name="Portal layout : Contacts menu entries"-->
+<!--              inherit_id="portal.portal_breadcrumbs" priority="20">-->
+<!--      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">-->
+<!--        <li>-->
+<!--          Personal Details:-->
+<!--        </li>-->
+<!--      </xpath>-->
+<!--    </template>-->
+
+    <!--- website inherit portal my account -->
+    <template id="my_account_home_page" name="home_page_my_account"
+              customize_show="True" inherit_id="portal.portal_my_home" priority="20">
+      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+        <t t-call="portal.portal_docs_entry">
+          <t t-set="title">Contacts Page</t>
+          <t t-set="url" t-value="'/contacts_details'"/>
+          <t t-set="placeholder_count" t-value="'contacts_count'"/>
+        </t>
+      </xpath>
+    </template>
+
   </data>
 </odoo>

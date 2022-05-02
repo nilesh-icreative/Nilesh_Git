@@ -7,8 +7,8 @@
       <field name="res_model">orphans.request</field>
       <field name="view_mode">tree</field>
       <field name="view_id" ref="orphans_request_tree_view"/>
+<!--      <field name="domain"></field>-->
     </record>
-
 
     <!-- actions Advertise Fore View  Manager -->
     <record model="ir.actions.act_window" id="orphans_advertise_action_window1">
