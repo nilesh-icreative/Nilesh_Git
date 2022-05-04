@@ -37,13 +37,15 @@
     <!--        <t t-se="title">Contacts</t>-->
     <template id="person_details_page" name="Person Page">
       <t t-call="website.layout">
-        <h2 align="center"><i><u>Contacts Details</u></i></h2>
+        <h2 align="center"><i><u>Personal Details</u></i></h2>
         <table border="2" align="center" style="width:70%">
           <tr align="center" style="background-color:silver">
+            <t t-if="con.image_1920">
             <th><marquee direction="left">
               <img alt="Avatar" style="height:25mm; width=25mm; border-radius: 50%;" t-att-src="image_data_uri(con.image_1920)"/>
             </marquee>
             </th>
+            </t>
           </tr>
         </table>
         <table border="3" align="center" style="width:70%">
