@@ -2,18 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e157fad-0f03-48e3-b371-a7e29d537bfc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/orphans_organization/models/reports.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/orphans_organization/views/reports.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../v_15_project/advance_actions/.idea/advance_actions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orphans_organization/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/__manifest__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orphans_organization/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/expense_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/expense_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/ngo_bool.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/ngo_bool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/orphans_advertise.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/orphans_advertise.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orphans_organization/models/orphans_donation.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/orphans_donation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orphans_organization/reports/donations_report_template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/reports/donations_report_template.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orphans_organization/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/orphans_expense.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/orphans_expense.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/orphans_member.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/orphans_member.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/orphans_orga.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/orphans_orga.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/models/wizards.py" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/models/wizards.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/orphans_organization/views/action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/action.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orphans_organization/views/menu_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/menu_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orphans_organization/views/o_donation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/o_donation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/views/member_sub_action.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/member_sub_action.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/orphans_organization/views/o_member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/orphans_organization/views/o_member.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../v_15_project/controller_task/views/login_forms.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../v_15_project/controller_task/views/login_forms.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../v_15_project/controller_task/views/sale_order_list_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../v_15_project/controller_task/views/sale_order_list_page.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +43,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/odoo/PycharmProjects/v_15/excel_report"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/odoo/workspace/projects/ngo&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

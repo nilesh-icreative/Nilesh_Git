@@ -19,7 +19,8 @@ class Organization_Reports(models.TransientModel):
 
     def organization_report_donation(self):
 
-        organization_record_set = self.env['res.partner'].search([('ngo_check', '=', True)])
+        organization_record_set = self.env[
+            'res.partner'].search([('ngo_check', '=', True)])
 
         filename = 'Donation_report.xls'
 
@@ -75,7 +76,9 @@ class Organization_Reports(models.TransientModel):
 
         for rec in organization_record_set:
 
-            donation_record_set = self.env['orphans.organization.donation'].search([('o_organization', '=', rec.id)])
+            donation_record_set = self.env[
+                'orphans.organization.donation'].search(
+                [('o_organization', '=', rec.id)])
 
             Col = 1
             Row += 1

@@ -1,6 +1,4 @@
-
-
-from odoo import models , fields , api
+from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from datetime import *
 import re
@@ -102,3 +100,10 @@ class orphans_request(models.TransientModel):
             }
         member.create(val)
         self.status = "apr"
+
+    def print_record(self):
+        print("================hello=============")
+        active_id = self.env.context.get('act_id')
+        print("========\n\n", active_id)
+
+        return active_id

@@ -59,7 +59,12 @@
             <td><span t-esc="con.phone"/></td>
             <td><span t-esc="con.email"/></td>
           </tr>
-        </table><br/><br/>
+        </table><br/>
+        <p align="center">
+          <a t-attf-href="/contacts_details/">
+            <button style="font-size: 15px;" class="btn-primary">Back</button>
+          </a>
+        </p>
       </t>
     </template>
 
