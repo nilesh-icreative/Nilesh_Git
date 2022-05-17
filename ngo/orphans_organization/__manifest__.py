@@ -10,24 +10,27 @@
         Long description of module's purpose
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Nilesh Vaghela",
+    'website': "http://www.aktivsoftware.com",
 
     # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
+    # Check https://github.com/odoo/odoo/blob/14.0/odoo
+    # /addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
+    'category': 'Ngo',
+    'version': '15.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/expense_type.xml',
         'views/ngo_bool.xml',
         'views/views.xml',
         'views/wizards.xml',
+        'views/sent_mail_request_user.xml',
         'views/o_donation.xml',
         'views/org_sub_action.xml',
         'views/orphans_orga.xml',
@@ -38,6 +41,8 @@
         'views/member_sub_action.xml',
         'views/o_member.xml',
 
+        'views/reports.xml',
+
         'reports/donations_report_template.xml',
         'reports/donation_report_format.xml',
         'reports/donation_report_actions.xml',
@@ -47,6 +52,6 @@
     ],
     # only loaded in demonstration mode
 
-    'license':'LGPL-3',
+    'license': 'LGPL-3',
 
 }

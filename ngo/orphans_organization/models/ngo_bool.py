@@ -1,5 +1,5 @@
-
 from odoo import models, fields, api
+
 
 class ngo(models.Model):
 
@@ -7,14 +7,18 @@ class ngo(models.Model):
 
     ngo_check = fields.Boolean()
 
-    total_member_orphan = fields.Integer(string="Total Members", compute="onchange_space")
-    currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
+    total_member_orphan = fields.Integer(string="Total Members",
+                                         compute="onchange_space")
+    currency_id = fields.Many2one("res.currency", string="Currency",
+                                  default=20, readonly=True)
     available_fund = fields.Integer(string="Available Funds")
-    foundation_years = fields.Selection(selection="foundation_y", string="Foundation Year")
+    foundation_years = fields.Selection(selection="foundation_y",
+                                        string="Foundation Year")
     total_capacity = fields.Integer(string="Total Capacity")
     space = fields.Integer(compute="onchange_space")
 
-    member_list_ids = fields.One2many('orphans.member', 'o_organization')
+    member_list_ids = fields.One2many('orphans.member',
+                                      'o_organization', limit=5)
 
     @api.onchange("total_capacity", "total_member_orphan")
     def onchange_space(self):
@@ -30,7 +34,8 @@ class ngo(models.Model):
 
         for j in orga_list:
             count_o = member.search_count([('o_organization', '=', j)])
-            self.search([('id', '=', j)]).write({'total_member_orphan': count_o})
+            self.search([('id', '=', j)]).write(
+                {'total_member_orphan': count_o})
 
         for rec in self:
             s = rec.total_capacity - rec.total_member_orphan

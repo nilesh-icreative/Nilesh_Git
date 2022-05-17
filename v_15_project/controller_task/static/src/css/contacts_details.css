@@ -1,0 +1,22 @@
+h2 {
+    color: red;
+    text-style: time;
+}
+
+th {
+    border: 3px solid;
+    background-color: grey;
+}
+
+table, td {
+    padding: 5px;
+    border: 1px dotted;
+}
+
+tr:hover {
+    background-color: grey;
+}
+
+a:hover {
+    background-color: white;
+}

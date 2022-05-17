@@ -58,10 +58,23 @@
         <tree>
             <field name="name"/>
             <field name="o_organization"/>
-            <field name="amount"/>
+            <field name="currency_id" attrs="{'column_invisible':1}"/>
+            <field name="amount" widget="monetary" sum="Total"/>
             <field name="phone" optional="hide"/>
             <field name="email" optional="hide"/>
         </tree>
+      </field>
+    </record>
+
+    <!-- Graph View -->
+    <record model="ir.ui.view" id="donation_organization_graph">
+      <field name="name">Donation Graph</field>
+      <field name="model">orphans.organization.donation</field>
+      <field name="arch" type="xml">
+        <graph string="Ngo">
+          <field name="o_organization"  type="row"/>
+          <field name="amount" type="measure"/>
+        </graph>
       </field>
     </record>
 

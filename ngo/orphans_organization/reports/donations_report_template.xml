@@ -1,10 +1,10 @@
 <odoo>
     <template id="report_donation">
-        <div class="header">
-            <div class="row"/>
-        </div>
         <t t-call="web.html_container">
-                <t t-call="web.external_layout">
+                <t t-call="web.internal_layout">
+                    <div class="header">
+                            <div class="row"/>
+                        </div>
                     <div class="page">
                         <div name="image" class="float-left">
                             <img alt="Avatar" style="height:35mm; width=35mm;" t-att-src="image_data_uri(doc.o_organization.image_1920)"/>
@@ -27,25 +27,22 @@
                         <b>Donor Name:  </b><span t-field="doc.name"/><br/>
                         <b>Amount:</b>  ₹<span t-field="doc.amount"/><br/>
                         <b>Date:</b> <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
-                        <div class="footer">
-                            <div class="text-center" style="border-top: 1px solid black;">
-                                Phone: <span t-field="doc.o_organization.phone"/> |
-                                Email: <span t-field="doc.o_organization.email"/> |
-                                Website: <span t-field="doc.o_organization.website"/> |
-                                Page: <span class="page"/>
-                            </div>
+                    </div>
+                    <div class="footer">
+                        <div class="text-center" style="border-top: 1px solid black;">
+                            Phone: <span t-field="doc.o_organization.phone"/> |
+                            Email: <span t-field="doc.o_organization.email"/> |
+                            Website: <span t-field="doc.o_organization.website"/> |
+                            Page: <span class="page"/>
                         </div>
                     </div>
                 </t>
             </t>
     </template>
 
-
     <template id="report_donation_format">
-    <t t-call="web.html_container">
         <t t-foreach="docs" t-as="doc">
             <t t-call="orphans_organization.report_donation"/>
         </t>
-    </t>
     </template>
 </odoo>

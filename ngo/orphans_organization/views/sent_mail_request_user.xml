@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+
+    <record id="email_template_request_user" model="mail.template">
+      <field name="name">Email Template</field>
+      <field name="model_id" ref="orphans_organization.model_orphans_request"/>
+        <field name="email_from">nileshicreative@gmail.com</field>
+        <field name="email_to">{{object.orphans_email}}</field>
+        <field name="subject">Orphan Organization Home Request Approved</field>
+        <field name="body_html" type="html">
+        <h2 style="background-color: coral;" align="center">Certificate of Adoption</h2>
+          <div style="background-color: orange;"><br/>
+            <h5 align="center">This is to certify that</h5>
+            <h3 align="center"><t t-esc="object.name"/></h3>
+            <h4 align="center">has been adopted into Family</h4>
+            <h4 align="center">from <u><t t-esc="object.o_organization.name"/></u> of Home Orphanage.</h4>
+<!--            <p align="center">-->
+<!--            <img alt="Avatar" style="height:15mm; width=15mm;-->
+<!--              border-radius: 90px;" t-attf-src="data:image/*;base64,{{object.o_organization.image_1920}}"/>-->
+<!--            </p>-->
+
+            <br/>
+            <b>Date:<t t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/></b><br/>
+            <b>Contacts No: <t t-esc="object.o_organization.phone"/></b><br/>
+            <b>Email: <t t-esc="object.o_organization.email"/></b><br/>
+          </div>
+        </field>
+    </record>
+
+  </data>
+</odoo>

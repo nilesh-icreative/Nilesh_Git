@@ -38,9 +38,21 @@
             <field name="name"/>
             <field name="od_organization"/>
             <field name="currency_id" attrs="{'column_invisible':1}"/>
-            <field name="e_amount" widget="monetary"/>
+            <field name="e_amount" widget="monetary" sum="Total"/>
             <field name="notes" optional="hide"/>
         </tree>
+      </field>
+    </record>
+
+    <!--graph view -->
+    <record model="ir.ui.view" id="expense_organization_graph">
+      <field name="name">Expense Graph</field>
+      <field name="model">orphans.organization.expense</field>
+      <field name="arch" type="xml">
+        <graph string="Ngo">
+          <field name="od_organization"  type="row"/>
+          <field name="e_amount" type="measure"/>
+        </graph>
       </field>
     </record>
 

@@ -1,0 +1,18 @@
+<odoo>
+  <data>
+
+    <!--- Store Expense Type -->
+    <record id="expense_type_food" model="expense_type">
+      <field name="name">Food</field>
+    </record>
+
+    <record id="expense_type_electricity" model="expense_type">
+      <field name="name">Electricity</field>
+    </record>
+
+    <record id="expense_type_fuel" model="expense_type">
+      <field name="name">Fuel</field>
+    </record>
+
+  </data>
+</odoo>

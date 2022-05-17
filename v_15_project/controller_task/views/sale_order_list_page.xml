@@ -1,0 +1,93 @@
+<odoo>
+  <data>
+
+    <template id="contacts_details_page" name="Contacts Page">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/controller_task/static/src/css/contacts_details.css"/>
+      </xpath>
+      <t t-call="website.layout">
+        <center><u><i><h2>Contacts List</h2></i></u></center>
+        <table style="width:80%" align="center" border="5px">
+          <tr align="center">
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+          <t t-foreach="details" t-as="con">
+            <tr>
+              <td>
+                <a t-attf-href="/contacts_details/{{ slug(con)}}">
+                  <span t-esc="con.name"/>
+                </a>
+              </td>
+              <td><span t-esc="con.phone"/></td>
+              <td><span t-esc="con.email"/></td>
+              <td align="center">
+                <a t-attf-href="/contacts_details/{{ slug(con)}}">
+                  <button style="font-size: 15px;" class="btn-primary">Click</button>
+                </a>
+              </td>
+            </tr>
+          </t>
+        </table>
+      </t>
+    </template>
+
+    <!--        <t t-se="title">Contacts</t>-->
+    <template id="person_details_page" name="Person Page">
+      <t t-call="website.layout">
+        <h2 align="center"><i><u>Personal Details</u></i></h2>
+        <table border="2" align="center" style="width:70%">
+          <tr align="center" style="background-color:silver">
+            <t t-if="con.image_1920">
+            <th><marquee direction="left">
+              <img alt="Avatar" style="height:25mm; width=25mm; border-radius: 50%;" t-att-src="image_data_uri(con.image_1920)"/>
+            </marquee>
+            </th>
+            </t>
+          </tr>
+        </table>
+        <table border="3" align="center" style="width:70%">
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+          <tr>
+            <td><span t-esc="con.name"/></td>
+            <td><span t-esc="con.phone"/></td>
+            <td><span t-esc="con.email"/></td>
+          </tr>
+        </table><br/>
+        <p align="center">
+          <a t-attf-href="/contacts_details/">
+            <button style="font-size: 15px;" class="btn-primary">Back</button>
+          </a>
+        </p>
+      </t>
+    </template>
+
+<!--    <template id="portal_my_home_menu_contacts" name="Portal layout : Contacts menu entries"-->
+<!--              inherit_id="portal.portal_breadcrumbs" priority="20">-->
+<!--      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">-->
+<!--        <li>-->
+<!--          Personal Details:-->
+<!--        </li>-->
+<!--      </xpath>-->
+<!--    </template>-->
+
+    <!--- website inherit portal my account -->
+    <template id="my_account_home_page" name="home_page_my_account"
+              customize_show="True" inherit_id="portal.portal_my_home" priority="20">
+      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+        <t t-call="portal.portal_docs_entry">
+          <t t-set="title">Contacts Page</t>
+          <t t-set="url" t-value="'/contacts_details'"/>
+          <t t-set="placeholder_count" t-value="'contacts_count'"/>
+        </t>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

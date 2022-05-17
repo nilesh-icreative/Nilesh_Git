@@ -1,7 +1,7 @@
-
-from odoo import models , fields , api
+from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import re
+
 
 class orphans_donation(models.Model):
 
@@ -9,8 +9,13 @@ class orphans_donation(models.Model):
     _description = 'orphans_donation'
 
     name = fields.Char(required=True, string="Donor Name")
-    o_organization = fields.Many2one('res.partner', required=True, string="Organization Home", domain=[('ngo_check', '=', True)])
-    currency_id = fields.Many2one("res.currency", string="Currency", default=20, readonly=True)
+    o_organization = fields.Many2one(
+        'res.partner', required=True, string="Organization Home",
+        domain=[('ngo_check', '=', True)]
+    )
+    currency_id = fields.Many2one(
+        "res.currency", string="Currency", default=20, readonly=True
+    )
     amount = fields.Integer(string="Amount", required=True)
     phone = fields.Char(string="Phone No", required=True, default="")
     email = fields.Char(string="Email", required=True, default="")
@@ -21,19 +26,20 @@ class orphans_donation(models.Model):
     state = fields.Many2one('res.country.state')
     zip = fields.Char()
     country = fields.Many2one('res.country')
+    excel_file = fields.Binary()
 
     @api.constrains('phone')
     def phone_check(self):
         for rec in self:
             if rec.phone and len(rec.phone) != 10:
-                raise ValidationError("Must Be 10 Digits!")
+                raise ValidationError("Phone No Must Be 10 Digits!")
             elif(rec.phone and not str(rec.phone).isdigit()):
                 raise ValidationError("Only Enter Number!")
 
     @api.constrains('email')
     def email_check(self):
         if self.email:
-            match = re.match('^[_a-z]+[0-9-]*(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',self.email)
+            match = re.match('^[_a-z]+[0-9-]*(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.email)
             if match == None:
                 raise ValidationError("Not a Valid Email")
 
@@ -68,8 +74,7 @@ class orphans_donation(models.Model):
 
         for rec in val:
             donation_amount = rec["amount"]
-            #print("=========dd=====\n",donation_amount)
-
+            # print("=========dd=====\n",donation_amount)
             orga_record = self.env['res.partner']
             record = orga_record.browse(rec['o_organization'])
             record_set = record.read(['available_fund'])
@@ -78,11 +83,9 @@ class orphans_donation(models.Model):
                 fund = i['available_fund']
                 amount = fund + donation_amount
                 record.write({'available_fund': amount})
-                #print("=========ffff============",amount)
+                # print("=========ffff============",amount)
 
         return super_donation
 
     def s_button(self):
         pass
-
-

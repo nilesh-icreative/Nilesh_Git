@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+
+    <record id="email_template_sale_order" model="mail.template">
+      <field name="name">Email Template</field>
+      <field name="model_id" ref="email_template.model_sale_order"/>
+        <field name="email_from">nileshicreative@gmail.com</field>
+        <field name="email_to">vnilesh590@gmail.com</field>
+        <field name="subject">Sale Order Quotations</field>
+        <field name="body_html" type="html">
+          <div style="margin: 0px; padding: 0px;">
+            <p style="margin: 0px; padding: 0px; font-size: 15px;">
+              <span>Dear,</span>
+              <t t-esc="object.partner_id.name"/>
+              <br/>
+              <table border="2" align="center">
+                <tr>
+                  <th>Order No</th>
+                  <th>Date</th>
+                </tr>
+                <tr>
+                  <td><t t-esc="object.name"/></td>
+                  <td><t t-esc="object.date_order"/></td>
+                </tr>
+
+              </table>
+              <br/><br/>
+              Your Order is Confirm
+            </p>
+          </div>
+        </field>
+    </record>
+
+  </data>
+</odoo>

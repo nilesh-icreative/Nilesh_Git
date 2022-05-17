@@ -1,4 +1,5 @@
-from odoo import models , fields , api
+from odoo import models, fields, api
+
 
 class expense_type(models.Model):
 

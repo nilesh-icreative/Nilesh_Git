@@ -1,0 +1,25 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="organization_report_wizard">
+      <field name="name">Organization Reports</field>
+      <field name="model">reports</field>
+      <field name="arch" type="xml">
+        <form>
+          <p align="center">
+          <button name="organization_report_donation" type="object" string="Donation Report" class="btn-primary"/>
+          <span style='margin-right:1.25em'></span>
+          <button name="organization_report_expense" type="object" string="Expense Report" class="btn-primary"/>
+          <span style='margin-right:1.25em'></span>
+          <button name="organization_report_profit" type="object" string="Profit Report" class="btn-primary"/>
+          </p>
+          <footer>
+            <button string="Cancel" special="cancel"/>
+          </footer>
+
+        </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

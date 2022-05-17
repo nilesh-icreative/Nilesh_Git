@@ -1,5 +1,5 @@
+from odoo import models, fields, api
 
-from odoo import models , fields , api
 
 class orphans_advertise(models.Model):
 
@@ -7,7 +7,9 @@ class orphans_advertise(models.Model):
     _description = 'orphans_advertise'
 
     image = fields.Binary(related="dona_organization.image_1920")
-    dona_organization = fields.Many2one('res.partner', string="Organization Home", required=True, domain=[('ngo_check', '=', True)])
+    dona_organization = fields.Many2one(
+        'res.partner', string="Organization Home", required=True,
+        domain=[('ngo_check', '=', True)])
     avl_seats = fields.Integer(string="Available Seats")
     exp_dates = fields.Date(string="Expired Dates", required=True,)
     facilities = fields.Html()
@@ -24,7 +26,7 @@ class orphans_advertise(models.Model):
                 state = rec.dona_organization.state_id.name
                 pin = rec.dona_organization.zip
                 country = rec.dona_organization.country_id.name
-                self.address = s1 + ", " + s2 + "\n" + city + " " + state + " " + pin +"\n"+ country
+                self.address = s1 + ", " + s2 + "\n" + city + " " + state + " " + pin + "\n" + country
 
     @api.model
     def default_get(self, field):
@@ -32,7 +34,7 @@ class orphans_advertise(models.Model):
         active_id = self.env.context.get("active_id")
         member_r = record.browse(active_id)
         member = member_r.read(['o_organization'])
-        print("====================",member)
+        print("====================", member)
         donation_class = super(orphans_advertise, self).default_get(field)
 
         for rec in member:

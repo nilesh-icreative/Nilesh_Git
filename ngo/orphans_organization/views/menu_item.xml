@@ -15,8 +15,11 @@
     <!--  Ngo Menu  Advertise -->
     <menuitem name="Advertise" id="orphans_menu_adv" parent="orphans_organization_menu_root"
               action="orphans_advertise_action_window"/>
+    <!-- Report Menu -->
+    <menuitem name="Reports" id="orphans_menu_report" parent="orphans_organization_menu_root"
+              action="organization_report_action"/>
 
-    <!-- Cinfiguration -->
+    <!-- Configuration -->
     <menuitem name="Configuration" id="orphans_organization_setting" parent="orphans_organization_menu_root"
               action="orphans_organization_action_window"/>
 

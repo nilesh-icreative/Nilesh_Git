@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+
+    <!-- Add image or Product in Quotation Report in Sale -->
+    <template id="quotation_report_product_image_add"
+              inherit_id="sale.report_saleorder_document">
+      <xpath expr="//td[@name='td_name']" position="inside">
+        <img alt="Avatar" style="height:15mm; width=15mm;"
+             t-attf-src="data:image/*;base64,{{line.product_id.image_1920}}"/>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

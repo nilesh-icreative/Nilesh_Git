@@ -9,12 +9,14 @@
         <form>
           <sheet>
             <div class="oe_button_box" name="button_box">
-              <button attrs="{'invisible':[('designation','=','member')]}" name="%(orphans_request_tree_action)d" type="action" icon="fa-bell-o" class="oe_highlight">
+              <button attrs="{'invisible':[('designation','=','member')]}" name="requests"
+                      type="object" icon="fa-bell-o" class="oe_highlight">
                 <div class="o_field_widget o_stat_info">
                   <span class="o_stat_text">Request</span>
                 </div>
               </button>
-              <button attrs="{'invisible':[('designation','=','member')]}" name="%(orphans_advertise_action_window1)d" type="action" icon="fa-bullhorn" class="oe_highlight">
+              <button attrs="{'invisible':[('designation','=','member')]}" name="%(orphans_advertise_action_window1)d"
+                      type="action" icon="fa-bullhorn" class="oe_highlight">
                 <div class="o_field_widget o_stat_info">
                   <span class="o_stat_text">Advertising</span>
                 </div>
@@ -68,7 +70,7 @@
       <field name="name">Orphans Member form</field>
       <field name="model">orphans.member</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree decoration-info="designation=='manager'">
           <field name="name"/>
           <field name="age"/>
           <field name="o_organization" optional="hide"/>
@@ -76,7 +78,6 @@
         </tree>
       </field>
     </record>
-
 
     <!-- Group By Member And Manager -->
 
