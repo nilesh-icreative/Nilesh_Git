@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+
+    <!-- Contracts List Page Template -->
+    <template id="contracts_list_page" name="Contracts Page">
+      <t t-call="website.layout">
+        <center><u><i><h2>Contracts List</h2></i></u></center>
+        <table style="width:80%" align="center" border="5px">
+          <tr align="center">
+            <th>Name</th><th>Status</th>
+          </tr>
+          <t t-foreach="details" t-as="con">
+            <tr>
+              <td>
+                <a t-attf-href="/my/contracts/{{ slug(con)}}">
+                  <span t-esc="con.name"/>
+                </a>
+              </td>
+              <td><span t-esc="con.state"/></td>
+            </tr>
+          </t>
+        </table>
+      </t>
+    </template>
+
+    <!-- Contracts Detail Page -->
+    <template id="contracts_details_page" name="Person Page">
+      <t t-call="website.layout">
+        <h2 align="center"><i><u>Contracts Details</u></i></h2>
+        <table border="3" align="center" style="width:70%">
+          <tr align="center">
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Working Schedule</th>
+            <th>Monthly Wage</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td><span t-esc="con.name"/></td>
+              <td><span t-esc="con.date_start"/></td>
+              <td><span t-esc="con.date_end"/></td>
+              <td><span t-esc="con.resource_calendar_id.name"/></td>
+              <td><span t-esc="con.wage"/></td>
+              <td><span t-esc="con.state"/></td>
+          </tr>
+        </table><br/>
+        <p align="center">
+          <input type="file" name="image_upload"/>
+          <input type="submit" name="Save" class="btn-primary" value="save"/>
+        </p>
+      </t>
+    </template>
+
+    <!-- Add Field in My Account Page -->
+    <template id="portal_my_home_contracts" name="home_page_my_account"
+               inherit_id="portal.portal_my_home" priority="10">
+      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+        <t t-call="portal.portal_docs_entry">
+          <t t-set="title">Contracts</t>
+          <t t-set="url" t-value="'/my/contracts'"/>
+          <t t-set="placeholder_count" t-value="'contracts_count'"/>
+        </t>
+      </xpath>
+    </template>
+
+
+
+  </data>
+</odoo>
