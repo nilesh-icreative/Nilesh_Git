@@ -26,29 +26,33 @@
     <!-- Contracts Detail Page -->
     <template id="contracts_details_page" name="Person Page">
       <t t-call="website.layout">
-        <h2 align="center"><i><u>Contracts Details</u></i></h2>
-        <table border="3" align="center" style="width:70%">
-          <tr align="center">
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Working Schedule</th>
-            <th>Monthly Wage</th>
-            <th>Status</th>
-          </tr>
-          <tr>
-            <td><span t-esc="con.name"/></td>
+          <h2 align="center"><i><u>Contracts Details</u></i></h2>
+        <form role="form" action="/file/upload" method="POST" enctype="multipart/form-data" id="file_upload_form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <input type="hidden" name="project_id" t-att-value="con.id"/>
+          <table border="3" align="center" style="width:70%">
+            <tr align="center">
+              <th>Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Working Schedule</th>
+              <th>Monthly Wage</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td><span t-esc="con.name"/></td>
               <td><span t-esc="con.date_start"/></td>
               <td><span t-esc="con.date_end"/></td>
               <td><span t-esc="con.resource_calendar_id.name"/></td>
               <td><span t-esc="con.wage"/></td>
               <td><span t-esc="con.state"/></td>
-          </tr>
-        </table><br/>
-        <p align="center">
-          <input type="file" name="image_upload"/>
-          <input type="submit" name="Save" class="btn-primary" value="save"/>
-        </p>
+            </tr>
+          </table><br/>
+          <p align="center">
+            <input type="file" clas="file" name="image_upload" accept="image/*" multiple="true"/>
+            <input type="submit" name="Save" class="btn-primary" value="save"/>
+          </p>
+        </form>
       </t>
     </template>
 
@@ -64,7 +68,17 @@
       </xpath>
     </template>
 
-
+    <!-- Attachment Create Successfully -->
+    <template id="attachment_create_successfully" name="Login Page">
+      <t t-call="website.layout">
+        <div class="container"><br/><br/>
+          <h2 style="color: green">Successfully Created.</h2>
+          <a t-attf-href="/my/contracts">
+            <button style="font-size: 15px;" class="btn-primary">Back</button>
+          </a>
+        </div>
+      </t>
+    </template>
 
   </data>
 </odoo>
