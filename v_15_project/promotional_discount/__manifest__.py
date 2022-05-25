@@ -28,6 +28,7 @@
         'security/ir.model.access.csv',
         'views/res_config_setting_view.xml',
         'views/views.xml',
+        'views/sale_views.xml',
 
     ],
     'license': 'LGPL-3',

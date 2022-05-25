@@ -12,8 +12,8 @@
               <group>
                 <field name="name"/>
                 <field name="discount_type"/>
-                <field name="discount"/>
-<!--                <field name="per_symbol" string="" attrs="{'invisible':[('discount_type','!=','per')]}"/>-->
+                <field name="discount" widget="monetary"/>
+                <field name="currency_id" attrs="{'invisible':1}"/>
               </group>
               <group>
                 <field name="start_date"/>
@@ -33,6 +33,12 @@
       <field name="arch" type="xml">
         <tree>
             <field name="name"/>
+            <field name="discount_type"/>
+<!--            <field name="currency_id" attrs="{'column_invisible':1}"/>-->
+            <field name="discount" widget="monetary"/>
+            <field name="start_date" optional="hide"/>
+            <field name="end_date" optional="hide"/>
+            <field name="min_order_amount"/>
         </tree>
       </field>
     </record>

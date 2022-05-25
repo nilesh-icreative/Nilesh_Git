@@ -6,17 +6,19 @@ class Promotional_Discount(models.Model):
     _description = 'promotional.discount'
 
     discount_type = fields.Selection([('per', 'Percentage'), ('fa', 'Fixed Amount')])
-    name = fields.Char()
-    discount = fields.Char(compute="_compute_percent", store=True)
+    name = fields.Char(required=True, default="")
+    discount = fields.Integer()
     min_order_amount = fields.Integer(string="Amount", default='100')
     start_date = fields.Date(string="Start Date")
     end_date = fields.Date(string="End Date")
-    # per_symbol = fields.Char(compute="_compute_percent", store=True)
+    currency_id = fields.Many2one("res.currency", string="Currency", readonly=True)
 
-    @api.depends('discount_type')
-    def _compute_percent(self):
+    @api.onchange('discount_type')
+    def _compute_symbol(self):
         for rec in self:
             if rec.discount_type == 'per':
-                self.discount = str()+'%'
+                self.currency_id = 168
             elif rec.discount_type == 'fa':
-                self.discount = '$'
+                self.currency_id = self.env.company.currency_id.id
+            else:
+                self.currency_id = ""
