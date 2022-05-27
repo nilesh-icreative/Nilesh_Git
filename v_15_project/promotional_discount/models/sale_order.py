@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -13,5 +14,28 @@ class SaleOrder(models.Model):
 
     def discount_search(self):
 
-        order_date = self.env.get('sale.order.line')
-        print("======================\n\n", order_date)
+        for rec in self:
+            pro_discount = self.env['promotional.discount'].search(
+                [('start_date', '<=', rec.date_order),
+                 ('end_date', '>=', rec.date_order),
+                 ('min_order_amount', '<=', rec.amount_total)]
+            )
+
+            discount_amount = []
+            for i in pro_discount:
+                if i.discount_type == 'per':
+                    amount = (rec.amount_total * i.discount)/100
+                    discount_amount.append(amount)
+                elif i.discount_type == 'fa':
+                    discount_amount.append(rec.amount_total - i.discount)
+
+            sale_order_line_obj = self.env['sale.order.line']
+            if discount_amount:
+                sale_order_line_obj.create({
+                    'product_id': 44,
+                    'order_id': self.id,
+                    'price_unit': -float(min(discount_amount)),
+                    })
+
+            if len(pro_discount) == 0:
+                raise ValidationError("Not Available Any Discount ")
