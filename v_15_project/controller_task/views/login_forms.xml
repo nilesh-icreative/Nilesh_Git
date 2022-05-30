@@ -6,7 +6,7 @@
         <div class="container"><br/><br/>
           <form role="form" action="/create/contacts" method="POST">
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-
+            <input type="hidden" name="contact_id" t-att-value="data.id"/>
             <div>
 
               <div>
@@ -15,7 +15,7 @@
                     <span>Contacts Name:</span>
                   </label>
                   <div>
-                    <input style="width: 350px" t-att-value="name" id="name" class="form-control o_website_form_input" autocomplete="off"
+                    <input style="width: 350px" t-att-value="data.name" id="name" class="form-control o_website_form_input" autocomplete="off"
                          type="text" name="name" required="required"/>
                     <br/>
                   </div>
@@ -28,7 +28,7 @@
                     <span>Contacts Phone:</span>
                   </label>
                   <div>
-                    <input style="width: 350px" t-att-value="phone" id="phone" class="form-control o_website_form_input" autocomplete="off"
+                    <input style="width: 350px" t-att-value="data.phone" id="phone" class="form-control o_website_form_input" autocomplete="off"
                          type="text" name="phone" maxlength="10" required="required"/>
                     <br/>
                   </div>
@@ -41,7 +41,7 @@
                     <span>Contacts Email:</span>
                   </label>
                   <div>
-                    <input style="width: 350px" t-att-value="email" id="email" autocomplete="off"
+                    <input style="width: 350px" t-att-value="data.email" id="email" autocomplete="off"
                          type="email" class="form-control o_website_form_input" name="email" required="required"/>
                     <br/>
                   </div>

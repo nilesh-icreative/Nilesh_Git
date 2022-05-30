@@ -5,8 +5,11 @@
       <xpath expr="." position="inside">
         <link rel="stylesheet" href="/controller_task/static/src/css/contacts_details.css"/>
       </xpath>
+      <a t-attf-href="/login_forms/">
+        <button style="z-index: 9999; position:fixed; top: 50%; left: 2%;" class="btn-primary">Create</button>
+      </a>
       <t t-call="website.layout">
-        <center><u><i><h2>Contacts List</h2></i></u></center>
+          <center><u><i><h2>Contacts List</h2></i></u></center>
         <table style="width:80%" align="center" border="5px">
           <tr align="center">
             <th>Name</th>
@@ -37,7 +40,9 @@
     <!--        <t t-se="title">Contacts</t>-->
     <template id="person_details_page" name="Person Page">
       <t t-call="website.layout">
-        <h2 align="center"><i><u>Personal Details</u></i></h2>
+        <div style="z-index: 9999; position: sticky; top: 0;">
+          <h2 align="center"><i><u>Personal Details</u></i></h2>
+        </div>
         <table border="2" align="center" style="width:70%">
           <tr align="center" style="background-color:silver">
             <t t-if="con.image_1920">
@@ -61,6 +66,10 @@
           </tr>
         </table><br/>
         <p align="center">
+          <a t-attf-href="/login_forms/{{ slug(con)}}">
+            <button style="font-size: 15px;" class="btn-primary">Edit</button>
+          </a>
+
           <a t-attf-href="/contacts_details/">
             <button style="font-size: 15px;" class="btn-primary">Back</button>
           </a>
