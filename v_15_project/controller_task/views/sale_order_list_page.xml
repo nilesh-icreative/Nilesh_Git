@@ -27,8 +27,8 @@
               <td><span t-esc="con.phone"/></td>
               <td><span t-esc="con.email"/></td>
               <td align="center">
-                <a t-attf-href="/contacts_details/{{ slug(con)}}">
-                  <button style="font-size: 15px;" class="btn-primary">Click</button>
+                <a t-attf-href="/Delete_contacts/{{ slug(con)}}">
+                  <i class="fa fa-trash" title="Delete"> </i>
                 </a>
               </td>
             </tr>

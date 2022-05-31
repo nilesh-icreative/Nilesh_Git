@@ -27,12 +27,12 @@ class SaleOrder(models.Model):
                     amount = (rec.amount_total * i.discount)/100
                     discount_amount.append(amount)
                 elif i.discount_type == 'fa':
-                    discount_amount.append(rec.amount_total - i.discount)
+                    discount_amount.append(i.discount)
 
             sale_order_line_obj = self.env['sale.order.line']
             if discount_amount:
                 sale_order_line_obj.create({
-                    'product_id': 44,
+                    'product_id': 45,
                     'order_id': self.id,
                     'price_unit': -float(min(discount_amount)),
                     })
