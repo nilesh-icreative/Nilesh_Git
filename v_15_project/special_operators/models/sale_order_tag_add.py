@@ -15,3 +15,4 @@ class sale(models.Model):
             rec.partner_id.write({'category_id': [(4, best_cust_id.id)]})
 
         return rec
+

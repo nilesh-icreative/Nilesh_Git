@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/controller_task/static/src/css/contacts_details.css"/>
       </xpath>
       <a t-attf-href="/login_forms/">
-        <button style="z-index: 9999; position:fixed; top: 50%; left: 2%;" class="btn-primary">Create</button>
+        <button style="z-index: 9999; position:fixed; top: 22%; left: 2%;" class="btn-primary">Create</button>
       </a>
       <t t-call="website.layout">
           <center><u><i><h2>Contacts List</h2></i></u></center>
@@ -28,7 +28,7 @@
               <td><span t-esc="con.email"/></td>
               <td align="center">
                 <a t-attf-href="/Delete_contacts/{{ slug(con)}}">
-                  <i class="fa fa-trash" title="Delete"> </i>
+                  <i class="fa fa-times" title="Delete"> </i>
                 </a>
               </td>
             </tr>

@@ -29,6 +29,7 @@
         'views/sale_views.xml',
         'views/views.xml',
         'views/res_config_setting_view.xml',
+        'views/product_view.xml',
     ],
     'license': 'LGPL-3',
 }

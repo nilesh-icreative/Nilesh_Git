@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class Promotional_Discount(models.Model):
@@ -9,8 +10,8 @@ class Promotional_Discount(models.Model):
     name = fields.Char(required=True, default="")
     discount = fields.Integer()
     min_order_amount = fields.Integer(string="Amount", default='100')
-    start_date = fields.Date(string="Start Date")
-    end_date = fields.Date(string="End Date")
+    start_date = fields.Date(string="Start Date", required=True)
+    end_date = fields.Date(string="End Date", required=True)
     currency_id = fields.Many2one("res.currency", string="Currency", readonly=True)
 
     @api.onchange('discount_type')
@@ -22,3 +23,8 @@ class Promotional_Discount(models.Model):
                 self.currency_id = self.env.company.currency_id.id
             else:
                 self.currency_id = ""
+
+    @api.constrains('start_date', 'end_date')
+    def check_date(self):
+        if self.start_date >= self.end_date:
+            raise ValidationError("Please Select Valid Date")
