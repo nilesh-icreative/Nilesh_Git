@@ -1,0 +1,120 @@
+<odoo>
+  <data>
+
+    <!-- Create Website menu -->
+    <record id="contact_menu" model="website.menu">
+      <field name="name">Contact Creation</field>
+      <field name="parent_id" ref="website.main_menu"/>
+      <field name="sequence">10</field>
+    </record>
+
+    <!-- Contact Create Form View Template -->
+    <template id="create_contacts_form_view" name="Contact Form View">
+      <t t-call="website.layout">
+        <div class="container"><br/><br/>
+          <form role="form" action="/create/contact" method="POST">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div>
+
+              <div>
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
+                    <span>Your Name:</span>
+                  </label>
+                  <div>
+                    <input style="width: 350px" id="name" class="form-control o_website_form_input" autocomplete="off"
+                         type="text" name="name" required="required"/>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
+                    <span>Your Email:</span>
+                  </label>
+                  <div>
+                    <input style="width: 350px" id="email" autocomplete="off"
+                         type="email" class="form-control o_website_form_input" name="email" required="required"/>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
+                    <span>Phone Number:</span>
+                  </label>
+                  <div>
+                    <input style="width: 350px" id="phone" class="form-control o_website_form_input" autocomplete="off"
+                         type="text" name="phone" maxlength="10" required="required"/>
+                    <br/>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
+                    <span>Image:</span>
+                  </label>
+                  <div>
+                    <input style="width: 350px" id="image_1920" autocomplete="off"
+                           data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true"
+                           type="file" accept="image/*" name="image_1920" class="file"/>
+                    <br/><br/>
+                    <p>
+                    <button style="width: 350px" type="text" class="btn-primary">Submit</button>
+                    </p>
+                    <br/><br/><br/>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </t>
+    </template>
+
+    <!-- Contact Record Create Successfully -->
+    <template id="contacts_create_successfully" name="Confirmation Page">
+      <t t-call="website.layout">
+        <div class="container"><br/><br/>
+          <h2 style="color: green">Successfully Created Record.</h2>
+          <a t-attf-href="/contacts_details/">
+            <button style="font-size: 15px;" class="btn-primary">View The Record</button>
+          </a>
+        </div>
+      </t>
+    </template>
+
+    <!-- Contacts Details Page -->
+    <template id="contacts_details_page" name="Contacts Page">
+      <t t-call="website.layout">
+          <center><u><i><h2>Contacts List</h2></i></u></center>
+          <a t-attf-href="/create/contact">
+            <button class="btn-primary">Back</button>
+          </a>
+        <table style="width:80%" align="center" border="5px">
+          <tr align="center">
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+          <t t-foreach="details" t-as="con">
+            <tr>
+              <td><span t-esc="con.name"/></td>
+              <td><span t-esc="con.phone"/></td>
+              <td><span t-esc="con.email"/></td>
+            </tr>
+          </t>
+        </table>
+        <br/>
+      </t>
+    </template>
+
+  </data>
+</odoo>

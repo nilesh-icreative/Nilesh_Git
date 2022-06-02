@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+
+    <!-- explicit Form view definition -->
+    <record model="ir.ui.view" id="sale_workflow_form_view">
+      <field name="name">Batch Sale Workflow</field>
+      <field name="model">batch.sale.workflow</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button string="Proceed Operation" class="btn-primary" type="object" name="btn_proceed_operation"/>
+            <button string="Cancel" class="btn-primary" type="object" name="btn_cancel"/>
+            <button string="Set To Draft" class="btn-primary" type="object" name="btn_draft"/>
+            <field name="status" widget="statusbar" options="{'clickable':'1'}"
+                   statusbar_visible="draft,done,cancel"/>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+                <field name="users_id" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+                <field name="operation_type" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+              </group>
+              <group>
+                <field name="partner_id" attrs="{'invisible': [('operation_type', '!=', 'mer')]}"/>
+                <field name="operation_date" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+              </group>
+              <span><b>Sale Order</b></span>
+              <field name="sale_order_ids" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit Tree view definition -->
+    <record model="ir.ui.view" id="sale_workflow_tree_view">
+      <field name="name">Batch Sale Workflow</field>
+      <field name="model">batch.sale.workflow</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="sale_workflow_action_window">
+      <field name="name">Batch Sale Workflow window</field>
+      <field name="res_model">batch.sale.workflow</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Batch Sale Workflow" id="sale_workflow_menu_root" action="sale_workflow_action_window"/>
+
+  </data>
+</odoo>
