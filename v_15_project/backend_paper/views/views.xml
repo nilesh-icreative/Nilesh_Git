@@ -1,6 +1,16 @@
 <odoo>
   <data>
 
+    <record id="sequence_self_service" model="ir.sequence">
+      <field name="name">Self Service</field>
+      <field name="code">self.service</field>
+      <field name="active">TRUE</field>
+      <field name="prefix">BS/</field>
+      <field name="padding">4</field>
+      <field name="number_next">1</field>
+      <field name="number_increment">1</field>
+    </record>
+
     <!-- explicit Form view definition -->
     <record model="ir.ui.view" id="sale_workflow_form_view">
       <field name="name">Batch Sale Workflow</field>
@@ -17,7 +27,7 @@
           <sheet>
             <group>
               <group>
-                <field name="name" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+                <field name="name" string=""/>
                 <field name="users_id" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
                 <field name="operation_type" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
               </group>

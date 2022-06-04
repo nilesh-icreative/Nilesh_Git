@@ -5,18 +5,26 @@ class BatchSaleWorkflow(models.Model):
     _name = 'batch.sale.workflow'
     _description = 'batch.sale.workflow'
 
-    name = fields.Char(required=True)
+    name = fields.Char(readonly=True, required=True, copy=False, default='New')
     users_id = fields.Many2one(comodel_name="res.users", string="Responsible")
     operation_type = fields.Selection(
         [('con',     'Confirm'), ('can', 'Cancel'), ('mer', 'Merge')], required=True, default='con')
 
-    partner_id = fields.Many2one(comodel_name="res.partner", string="Customer", required=True)
+    partner_id = fields.Many2one(comodel_name="res.partner", string="Customer")
     status = fields.Selection(selection=[
         ('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel')],
         default="draft")
 
     sale_order_ids = fields.Many2many(comodel_name='sale.order')
     operation_date = fields.Date(string="Operation Date", required=True)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('name', 'New') == 'New':
+            vals['name'] = self.env['ir.sequence'].next_by_code(
+                'self.service') or 'New'
+        result = super(BatchSaleWorkflow, self).create(vals)
+        return result
 
     @api.onchange('operation_type', 'partner_id', 'users_id')
     def _onchange_operation_type(self):

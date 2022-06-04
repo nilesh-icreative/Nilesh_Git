@@ -11,6 +11,7 @@
     # any module necessary for this one to work correctly
     'depends': ['base', 'website'],
 
+
     # always loaded
     'data': [
         'views/create_contact_form_template.xml',
