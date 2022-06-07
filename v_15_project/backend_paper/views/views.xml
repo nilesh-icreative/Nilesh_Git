@@ -18,10 +18,13 @@
       <field name="arch" type="xml">
         <form>
           <header>
-            <button string="Proceed Operation" class="btn-primary" type="object" name="btn_proceed_operation"/>
-            <button string="Cancel" class="btn-primary" type="object" name="btn_cancel"/>
-            <button string="Set To Draft" class="btn-primary" type="object" name="btn_draft"/>
-            <field name="status" widget="statusbar" options="{'clickable':'1'}"
+            <button string="Proceed Operation" class="btn-primary" type="object" name="btn_proceed_operation"
+            attrs="{'invisible': [('id','=',False)]}"/>
+            <button string="Cancel" class="btn-primary" type="object" name="btn_cancel"
+            attrs="{'invisible': ['|',('status','not in','draft'),('id', '=', False)]}"/>
+            <button string="Set To Draft" class="btn-primary" type="object" name="btn_draft"
+            attrs="{'invisible': [('status','not in','cancel')]}"/>
+            <field name="status" widget="statusbar"
                    statusbar_visible="draft,done,cancel"/>
           </header>
           <sheet>
@@ -49,6 +52,9 @@
       <field name="model">batch.sale.workflow</field>
       <field name="arch" type="xml">
         <tree>
+          <header>
+            <button name="hello" string="Click" type="object"/>
+          </header>
           <field name="name"/>
         </tree>
       </field>

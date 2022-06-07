@@ -106,12 +106,17 @@
             <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
+            <th></th>
           </tr>
           <t t-foreach="details" t-as="con">
             <tr>
               <td><span t-esc="con.name"/></td>
               <td><span t-esc="con.phone"/></td>
               <td><span t-esc="con.email"/></td>
+              <td width="5%">
+                <img alt="Avatar" style="height:10mm; width=10mm;"
+                     t-att-src="image_data_uri(con.image_1920)"/>
+              </td>
             </tr>
           </t>
         </table>

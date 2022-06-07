@@ -17,5 +17,10 @@
         'views/create_contact_form_template.xml',
     ],
 
+    'assets': {
+        'web.assets_frontend': [
+            'frontend_paper/static/src/css/frontend.css',
+        ]
+    },
     'license': 'LGPL-3',
 }

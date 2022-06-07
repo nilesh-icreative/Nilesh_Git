@@ -18,6 +18,9 @@ class BatchSaleWorkflow(models.Model):
     sale_order_ids = fields.Many2many(comodel_name='sale.order')
     operation_date = fields.Date(string="Operation Date", required=True)
 
+    def hello(self):
+        print("===========================hello\n\n")
+
     @api.model
     def create(self, vals):
         if vals.get('name', 'New') == 'New':
