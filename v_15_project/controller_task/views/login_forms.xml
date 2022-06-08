@@ -7,7 +7,7 @@
         <div class="container"><br/><br/>
           <form role="form" action="/create/contacts" method="POST">
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-            <input type="hidden" name="contact_id" t-att-value="data.id"/>
+            <input type="hidden" name="contact_id" t-att-value="(data) and (data.id)"/>
             <div>
 
               <div>
@@ -16,7 +16,7 @@
                     <span>Contacts Name:</span>
                   </label>
                   <div>
-                    <input style="width: 350px" t-att-value="data.name" id="name" class="form-control o_website_form_input" autocomplete="off"
+                    <input style="width: 350px" t-att-value="(data) and (data.name)" id="name" class="form-control o_website_form_input" autocomplete="off"
                          type="text" name="name" required="required"/>
                     <br/>
                   </div>
@@ -29,7 +29,7 @@
                     <span>Contacts Phone:</span>
                   </label>
                   <div>
-                    <input style="width: 350px" t-att-value="data.phone" id="phone" class="form-control o_website_form_input" autocomplete="off"
+                    <input style="width: 350px" t-att-value="(data) and (data.phone)" id="phone" class="form-control o_website_form_input" autocomplete="off"
                          type="text" name="phone" maxlength="10" required="required"/>
                     <br/>
                   </div>
@@ -42,7 +42,7 @@
                     <span>Contacts Email:</span>
                   </label>
                   <div>
-                    <input style="width: 350px" t-att-value="data.email" id="email" autocomplete="off"
+                    <input style="width: 350px" t-att-value="(data) and (data.email)" id="email" autocomplete="off"
                          type="email" class="form-control o_website_form_input" name="email" required="required"/>
                     <br/>
                   </div>
@@ -85,76 +85,76 @@
     </template>
 
 
-    <!---Create New Record Template in Contacts -->
-    <template id="create_contacts_forms_page" name="Login Page">
-      <t t-call="website.layout">
-        <div class="container"><br/><br/>
-          <form role="form" action="/create/contacts" method="POST">
-            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-            <div>
+<!--    &lt;!&ndash;-Create New Record Template in Contacts &ndash;&gt;-->
+<!--    <template id="create_contacts_forms_page" name="Login Page">-->
+<!--      <t t-call="website.layout">-->
+<!--        <div class="container"><br/><br/>-->
+<!--          <form role="form" action="/create/contacts" method="POST">-->
+<!--            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--            <div>-->
 
-              <div>
-                <div class="row s_col_no_resize s_col_no_bgcolor">
-                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
-                    <span>Contacts Name:</span>
-                  </label>
-                  <div>
-                    <input style="width: 350px" id="name" class="form-control o_website_form_input" autocomplete="off"
-                         type="text" name="name" required="required"/>
-                    <br/>
-                  </div>
-                </div>
-              </div>
+<!--              <div>-->
+<!--                <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">-->
+<!--                    <span>Contacts Name:</span>-->
+<!--                  </label>-->
+<!--                  <div>-->
+<!--                    <input style="width: 350px" id="name" class="form-control o_website_form_input" autocomplete="off"-->
+<!--                         type="text" name="name" required="required"/>-->
+<!--                    <br/>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div>
-                <div class="row s_col_no_resize s_col_no_bgcolor">
-                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
-                    <span>Contacts Phone:</span>
-                  </label>
-                  <div>
-                    <input style="width: 350px" id="phone" class="form-control o_website_form_input" autocomplete="off"
-                         type="text" name="phone" maxlength="10" required="required"/>
-                    <br/>
-                  </div>
-                </div>
-              </div>
+<!--              <div>-->
+<!--                <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">-->
+<!--                    <span>Contacts Phone:</span>-->
+<!--                  </label>-->
+<!--                  <div>-->
+<!--                    <input style="width: 350px" id="phone" class="form-control o_website_form_input" autocomplete="off"-->
+<!--                         type="text" name="phone" maxlength="10" required="required"/>-->
+<!--                    <br/>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div>
-                <div class="row s_col_no_resize s_col_no_bgcolor">
-                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
-                    <span>Contacts Email:</span>
-                  </label>
-                  <div>
-                    <input style="width: 350px" id="email" autocomplete="off"
-                         type="email" class="form-control o_website_form_input" name="email" required="required"/>
-                    <br/>
-                  </div>
-                </div>
-              </div>
+<!--              <div>-->
+<!--                <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">-->
+<!--                    <span>Contacts Email:</span>-->
+<!--                  </label>-->
+<!--                  <div>-->
+<!--                    <input style="width: 350px" id="email" autocomplete="off"-->
+<!--                         type="email" class="form-control o_website_form_input" name="email" required="required"/>-->
+<!--                    <br/>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div>
-                <div class="row s_col_no_resize s_col_no_bgcolor">
-                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">
-                    <span>Contacts Image:</span>
-                  </label>
-                  <div>
-                    <input style="width: 350px" id="image_1920" autocomplete="off"
-                           data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true"
-                           type="file" accept="image/*" name="image_1920" class="file"/>
-                    <br/><br/>
-                    <p>
-                    <button style="width: 350px" type="text" class="btn-primary">Submit</button>
-                    </p>
-                    <br/><br/><br/>
-                  </div>
-                </div>
-              </div>
+<!--              <div>-->
+<!--                <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                  <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px">-->
+<!--                    <span>Contacts Image:</span>-->
+<!--                  </label>-->
+<!--                  <div>-->
+<!--                    <input style="width: 350px" id="image_1920" autocomplete="off"-->
+<!--                           data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true"-->
+<!--                           type="file" accept="image/*" name="image_1920" class="file"/>-->
+<!--                    <br/><br/>-->
+<!--                    <p>-->
+<!--                    <button style="width: 350px" type="text" class="btn-primary">Submit</button>-->
+<!--                    </p>-->
+<!--                    <br/><br/><br/>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-            </div>
-          </form>
-        </div>
-      </t>
-    </template>
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </t>-->
+<!--    </template>-->
 
 
   </data>

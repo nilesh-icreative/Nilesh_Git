@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+
+    <!--Add Field qty of order in product variants from -->
+    <record id="product_variants_from_view" model="ir.ui.view">
+      <field name="name">product_product_form</field>
+      <field name="model">product.product</field>
+      <field name="inherit_id" ref="product.product_normal_form_view"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='detailed_type']" position="after">
+          <field name="qty_on_order"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
