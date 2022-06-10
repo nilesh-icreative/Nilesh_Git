@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-
+import json
 
 class BatchSaleWorkflow(models.Model):
     _name = 'batch.sale.workflow'
@@ -18,8 +18,27 @@ class BatchSaleWorkflow(models.Model):
     sale_order_ids = fields.Many2many(comodel_name='sale.order')
     operation_date = fields.Date(string="Operation Date", required=True)
 
-    def hello(self):
-        print("===========================hello\n\n")
+    user_domain = fields.Char(compute="_responsible_user", readonly=True, store=False)
+
+    @api.depends('users_id', 'operation_type', 'partner_id')
+    def _responsible_user(self):
+        for rec in self:
+            if rec.operation_type == 'con':
+                rec.user_domain = json.dumps([
+                    ('user_id', '=', rec.users_id.id),
+                    ('state', 'in', ['draft', 'sent'])
+                ])
+            elif rec.operation_type == 'can':
+                rec.user_domain = json.dumps([
+                    ('user_id', '=', rec.users_id.id),
+                    ('state', 'in', ['draft', 'sent', 'sale'])
+                ])
+            elif rec.operation_type == 'mer':
+                rec.user_domain = json.dumps([
+                    ('user_id', '=', rec.users_id.id),
+                    ('state', 'in', ['draft', 'sent']),
+                    ('partner_id', '=', rec.partner_id.id)
+                ])
 
     @api.model
     def create(self, vals):
@@ -29,22 +48,8 @@ class BatchSaleWorkflow(models.Model):
         result = super(BatchSaleWorkflow, self).create(vals)
         return result
 
-    @api.onchange('operation_type', 'partner_id', 'users_id')
-    def _onchange_operation_type(self):
-        if self.operation_type == 'con':
-            return {'domain': {'sale_order_ids': ['|', ('state', '=', 'draft'), ('state', '=', 'sent'),
-                                                  ('user_id', '=', self.users_id.id)]}}
-        elif self.operation_type == 'can':
-            print("===========hello\n\n")
-            return {'domain': {'sale_order_ids': ['|', '|',  ('state', '=', 'draft'), ('state', '=', 'sent'),
-                                                  ('state', '=', 'sale'), ('user_id', '=', self.users_id.id)]}}
-        elif self.operation_type == 'mer':
-            return {'domain': {'sale_order_ids': ['|', ('state', '=', 'draft'), ('state', '=', 'sent'),
-                                                  ('partner_id', '=', self.partner_id.id),
-                                                  ('user_id', '=', self.users_id.id)]}}
-
     def btn_proceed_operation(self):
-        self.write({'status': 'done'})
+        # self.write({'status': 'done'})
         for order_rec in self.sale_order_ids:
             sale_order_record = self.env['sale.order'].search(
                 [('id', '=', order_rec.id)]
@@ -61,7 +66,9 @@ class BatchSaleWorkflow(models.Model):
                 if self.sale_order_ids.order_line:
                     sale_order_record.create({
                         'partner_id': self.partner_id.id,
-                        'order_line': self.sale_order_ids.order_line,
+                        'order_line': [(0, 0, {
+                            'product_id': 15,
+                        })]
                     })
                 sale_order_record.action_cancel()
 

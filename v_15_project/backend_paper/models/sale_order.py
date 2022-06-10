@@ -19,3 +19,12 @@ class SaleOrder(models.Model):
             total_qty.append(rec.product_uom_qty)
 
         self.total_capacity = sum(total_qty)
+    #
+    # @api.constrains('order_line')
+    # def _unique_product_check(self):
+    #     for sale_rec in self:
+    #         exist_product = []
+    #         for line in sale_rec.order_line:
+    #             if line.product_id.id in exist_product:
+    #                 raise ValidationError('Product Select Must Be Unique')
+    #             exist_product.append(line.product_id.id)
