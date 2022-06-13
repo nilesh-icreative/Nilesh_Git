@@ -49,7 +49,7 @@ class BatchSaleWorkflow(models.Model):
         return result
 
     def btn_proceed_operation(self):
-        # self.write({'status': 'done'})
+        self.write({'status': 'done'})
         for order_rec in self.sale_order_ids:
             sale_order_record = self.env['sale.order'].search(
                 [('id', '=', order_rec.id)]
@@ -63,13 +63,17 @@ class BatchSaleWorkflow(models.Model):
             elif self.operation_type == 'can':
                 sale_order_record.action_cancel()
             elif self.operation_type == 'mer':
-                if self.sale_order_ids.order_line:
-                    sale_order_record.create({
-                        'partner_id': self.partner_id.id,
-                        'order_line': [(0, 0, {
-                            'product_id': 15,
-                        })]
-                    })
+                order_line = []
+                for product_rec in self.sale_order_ids.order_line:
+                    order_line.append((0, 0, {
+                        'product_id': product_rec.product_id.id,
+                        'product_uom_qty': product_rec.product_uom_qty,
+                    }))
+                new_sale_order = sale_order_record.create({
+                    'partner_id': self.partner_id.id,
+                    'date_order': self.operation_date,
+                })
+                new_sale_order.order_line = order_line
                 sale_order_record.action_cancel()
 
     def btn_cancel(self):
