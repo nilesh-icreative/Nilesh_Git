@@ -14,10 +14,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizards/product_view.xml',
         'views/views.xml',
         'views/product_view.xml',
         'views/sale_order_view.xml',
         'views/sale_order_line_view.xml',
+        
     ],
     'application': True,
     'license': 'LGPL-3',

@@ -27,7 +27,7 @@ class BatchSaleWorkflow(models.Model):
                 rec.user_domain = json.dumps([
                     ('user_id', '=', rec.users_id.id),
                     ('state', 'in', ['draft', 'sent'])
-                ])
+                 ])
             elif rec.operation_type == 'can':
                 rec.user_domain = json.dumps([
                     ('user_id', '=', rec.users_id.id),

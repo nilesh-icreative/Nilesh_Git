@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+
+     <record id="product_wizards" model="ir.ui.view">
+        <field name="name">Product Wizards</field>
+        <field name="model">product</field>
+        <field name="arch" type="xml">
+          <form>
+            <sheet>
+                <field name="sale_order_line" string="">
+                <tree editable="bottom">
+                  <field name="product_id"/>
+                  <field name="quantity"/>
+                  <field name="price"/>
+                </tree>
+                </field>
+
+              <footer>
+                <button string="Save" class="btn-primary"/>
+                <button string="Cancel" special="cancel"/>
+              </footer>
+            </sheet>
+          </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="product_wizards_action_window">
+      <field name="name">Product Wizard</field>
+      <field name="res_model">product</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="product_wizards"/>
+      <field name="target">new</field>
+    </record>
+
+  </data>
+</odoo>

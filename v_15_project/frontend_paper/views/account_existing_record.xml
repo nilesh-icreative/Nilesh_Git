@@ -1,0 +1,16 @@
+<odoo>
+  <data>
+
+    <template id="existing_record_sale_order" name="sale_order_account"
+              customize_show="True" inherit_id="portal.portal_my_home" priority="20">
+      <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+        <t t-call="portal.portal_docs_entry">
+          <t t-set="title">Check Existing Order</t>
+          <t t-set="url" t-value="'/create/contact'"/>
+          <t t-set="placeholder_count" t-value="'sale_order_count'"/>
+        </t>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

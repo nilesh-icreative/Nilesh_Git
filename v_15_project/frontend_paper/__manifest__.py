@@ -15,6 +15,7 @@
     # always loaded
     'data': [
         'views/create_contact_form_template.xml',
+        'views/account_existing_record.xml',
     ],
 
     'assets': {

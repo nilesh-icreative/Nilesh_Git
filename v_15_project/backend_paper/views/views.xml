@@ -23,6 +23,8 @@
             <button string="Cancel" class="btn-primary" type="object" name="btn_cancel"
             attrs="{'invisible': ['|',('status','not in','draft'),('id', '=', False)]}"/>
             <button string="Set To Draft" class="btn-primary" type="object" name="btn_draft"/>
+            <button type="action" name="%(backend_paper.product_wizards_action_window)d"
+                    class="btn-primary" string="Product"/>
             <field name="status" widget="statusbar"
                    statusbar_visible="draft,done,cancel"/>
           </header>
@@ -40,7 +42,7 @@
               </group>
               <span><b>Sale Order</b></span>
               <field name="user_domain" invisible="1"/>
-              <field name="sale_order_ids" domain="user_domain" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+              <field name="sale_order_ids" domain = 'user_domain' attrs="{'readonly': [('status', '!=', 'draft')]}"/>
             </group>
           </sheet>
         </form>
