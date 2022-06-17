@@ -38,6 +38,8 @@
               <group>
                 <field name="partner_id" attrs="{'invisible': [('operation_type', '!=', 'mer')],
                 'required': [('operation_type','=','mer')]}"/>
+                <field name="partner_tags" attrs="{'invisible': [('operation_type', '!=', 'mer')]}"
+                widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="operation_date" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
               </group>
               <span><b>Sale Order</b></span>

@@ -16,7 +16,7 @@
                 </field>
 
               <footer>
-                <button string="Save" class="btn-primary"/>
+                <button type="object" name="merge_sale_order" string="Save" class="btn-primary"/>
                 <button string="Cancel" special="cancel"/>
               </footer>
             </sheet>

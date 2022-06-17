@@ -9,6 +9,6 @@ class Order_Line(models.TransientModel):
 
     sale_order_id = fields.Many2one(comodel_name="product")
 
-    product_id = fields.Many2one(comodel_name="product.product", readonly=True)
+    product_id = fields.Many2one(comodel_name="product.product")
     quantity = fields.Float()
     price = fields.Float()
