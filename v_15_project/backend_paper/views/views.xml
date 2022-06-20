@@ -24,7 +24,8 @@
             attrs="{'invisible': ['|',('status','not in','draft'),('id', '=', False)]}"/>
             <button string="Set To Draft" class="btn-primary" type="object" name="btn_draft"/>
             <button type="action" name="%(backend_paper.product_wizards_action_window)d"
-                    class="btn-primary" string="Product"/>
+                    class="btn-primary" string="Product"
+                    attrs="{'invisible': [('operation_type', '!=', 'mer')]}"/>
             <field name="status" widget="statusbar"
                    statusbar_visible="draft,done,cancel"/>
           </header>
@@ -39,7 +40,7 @@
                 <field name="partner_id" attrs="{'invisible': [('operation_type', '!=', 'mer')],
                 'required': [('operation_type','=','mer')]}"/>
                 <field name="partner_tags" attrs="{'invisible': [('operation_type', '!=', 'mer')]}"
-                widget="many2many_tags" options="{'color_field': 'color'}"/>
+                widget="many2many_tags" options="{'color_field': 'color', 'create_edit': True}"/>
                 <field name="operation_date" attrs="{'readonly': [('status', '!=', 'draft')]}"/>
               </group>
               <span><b>Sale Order</b></span>

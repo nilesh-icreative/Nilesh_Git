@@ -13,10 +13,10 @@
                 <field name="name"/>
                 <field name="discount_type"/>
                 <field name="currency_id" attrs="{'invisible':1}"/>
-                <field name="discount" widget="monetary"/>
-                <div class="o_row">
-                  <span attrs="{'invisible': [('discount_type', '!=', 'per')]}">%%</span>
-                  <span attrs="{'invisible': [('discount_type', '!=', 'fa')]}">$</span>
+                <label for="discount"></label>
+                <div>
+                <field name="discount" class="oe_inline" widget="monetary"/>
+                <span attrs="{'invisible': [('discount_type', '!=', 'per')]}" class="oe_inline">%</span>
                 </div>
               </group>
               <group>

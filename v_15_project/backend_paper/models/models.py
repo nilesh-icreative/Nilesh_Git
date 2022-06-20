@@ -11,8 +11,7 @@ class BatchSaleWorkflow(models.Model):
         [('con',     'Confirm'), ('can', 'Cancel'), ('mer', 'Merge')], required=True, default='con')
 
     partner_id = fields.Many2one(comodel_name="res.partner", string="Customer")
-    partner_tags = fields.Many2many(comodel_name='res.partner.category', column1='partner_id',
-                                    column2='category_id', string="Tags")
+    partner_tags = fields.Many2many(related='partner_id.category_id', string="Tags", readonly=False)
 
     status = fields.Selection(selection=[
         ('draft', 'Draft'), ('done', 'Done'), ('cancel', 'Cancel')],
@@ -23,23 +22,11 @@ class BatchSaleWorkflow(models.Model):
 
     user_domain = fields.Char(compute="_responsible_user", readonly=True, store=False)
 
-    # @api.onchange('partner_id', 'partner_tags')
-    # def customer_tag(self):
-    #     """
-    #     Tag Change
-    #     """
-    #     if self.partner_id:
-    #         for rec in self:
-    #             rec.partner_tags.write({'category_id': [(4, rec.partner_id.category_id.id)]})
-    #
-    #     # if self.partner_tags:
-    #     #     partner_obj = self.env['res.partner'].search([('id', '=', self.partner_id.id)]).read(['category_id'])
-    #     #     print("=======\n\n", partner_obj)
-
     @api.depends('users_id', 'operation_type', 'partner_id')
     def _responsible_user(self):
         for rec in self:
             if rec.operation_type == 'con':
+                print("====hello\n\n")
                 rec.user_domain = json.dumps([
                     ('user_id', '=', rec.users_id.id),
                     ('state', 'in', ['draft', 'sent'])
