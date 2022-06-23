@@ -16,7 +16,7 @@
                 <label for="discount"></label>
                 <div>
                 <field name="discount" class="oe_inline" widget="monetary"/>
-                <span attrs="{'invisible': [('discount_type', '!=', 'per')]}" class="oe_inline">%</span>
+                <span attrs="{'invisible': [('discount_type', '!=', 'per')]}">%</span>
                 </div>
               </group>
               <group>

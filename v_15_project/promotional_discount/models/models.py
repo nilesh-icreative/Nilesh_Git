@@ -6,7 +6,8 @@ class Promotional_Discount(models.Model):
     _name = 'promotional.discount'
     _description = 'promotional.discount'
 
-    discount_type = fields.Selection([('per', 'Percentage'), ('fa', 'Fixed Amount')])
+    discount_type = fields.Selection([('per', 'Percentage'), ('fa', 'Fixed Amount')],
+                                     required=True)
     name = fields.Char(required=True, default="")
     discount = fields.Integer(string="Discount")
     min_order_amount = fields.Integer(string="Amount", default='100')
@@ -19,8 +20,8 @@ class Promotional_Discount(models.Model):
         for rec in self:
             if rec.discount_type == 'fa':
                 self.currency_id = self.env.company.currency_id.id
-            elif rec.discount_type == '':
-                pass
+            elif rec.discount_type == 'per':
+                self.currency_id = False
 
     @api.constrains('start_date', 'end_date')
     def check_date(self):
