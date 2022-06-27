@@ -1,23 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "promotional_discount",
+    'name': "Exam Paper",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
         subtitle on modules listing or apps.openerp.com""",
 
-    'description': """
-        Long description of module's purpose
-    """,
-
-    'author': "Vaghela Nilesh",
+    'author': "Nileshkumar Vaghela",
     'website': "http://www.aktivsoftware.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/
-    # 14.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Sale Order',
+    'category': 'Sale',
     'version': '15.0.1.0.0',
 
     # any module necessary for this one to work correctly
@@ -25,12 +17,13 @@
 
     # always loaded
     'data': [
-        'security/discount_security.xml',
         'security/ir.model.access.csv',
-        'views/sale_views.xml',
         'views/views.xml',
+        'views/contact_views.xml',
         'views/res_config_setting_view.xml',
-        'views/product_view.xml',
+        'views/mail_template_limit_customer.xml',
     ],
+
     'license': 'LGPL-3',
+
 }

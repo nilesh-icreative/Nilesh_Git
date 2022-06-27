@@ -8,7 +8,9 @@
         <xpath expr="//button[@name='action_cancel']" position="after">
           <button name="discount_search" type="object" string="Apply Promotional Discount" class="btn-primary"
                   attrs="{'invisible':[('discount_boolean','=',False)]}"/>
-          <field name="discount_boolean" attrs="{'invisible':['|',('discount_boolean','=',True),('discount_boolean','=',False)]}"/>
+          <field name="discount_boolean" invisible="1"/>
+          <button class="btn-primary" string="Discount"
+                  groups="promotional_discount.group_promotional_discount"/>
         </xpath>
       </field>
     </record>

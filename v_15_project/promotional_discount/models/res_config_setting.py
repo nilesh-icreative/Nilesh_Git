@@ -4,6 +4,8 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     promotional_discount = fields.Boolean()
+    group_promotional_discount = fields.Boolean(
+        implied_group="promotional_discount.group_promotional_discount")
 
     @api.model
     def set_values(self):

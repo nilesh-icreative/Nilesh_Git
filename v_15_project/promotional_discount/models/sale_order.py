@@ -4,16 +4,36 @@ from odoo.exceptions import ValidationError
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    discount_boolean = fields.Boolean(compute="_hello", store=True)
+    discount_boolean = fields.Boolean(compute="_discount_bool_value")
 
-    @api.depends('partner_id')
-    def _hello(self):
-        boolean_values = self.env['ir.config_parameter'].get_param(
+    # @api.onchange('order_line')
+    # def discount_button_visible(self):
+    #     """
+    #     Button Visible Apply Promotional Discount
+    #     """
+    #     discount_product = self.env['product.product'].search([('pro_discount_boolean', '=', True)])
+    #     for sale_rec in self.order_line.product_id:
+    #         if sale_rec.id == discount_product.id:
+    #             self.discount_boolean = False
+    #         elif sale_rec.id != discount_product.id:
+    #             self.discount_boolean = True
+    #     # print("======onchange========\n\n", self.discount_boolean)
+
+    @api.depends('order_line')
+    def _discount_bool_value(self):
+        self.discount_boolean = self.env['ir.config_parameter'].get_param(
             'pro_discount')
-
-        self.discount_boolean = boolean_values
+        discount_product = self.env['product.product'].search([('pro_discount_boolean', '=', True)])
+        for sale_rec in self.order_line.product_id:
+            if sale_rec.id == discount_product.id:
+                self.discount_boolean = False
+            elif sale_rec.id != discount_product.id:
+                self.discount_boolean = True
 
     def discount_search(self):
+        """
+        Discount Calculation
+        """
 
         discount_product = self.env['product.product'].search([('pro_discount_boolean', '=', True)])
 
@@ -46,3 +66,4 @@ class SaleOrder(models.Model):
                     'order_id': self.id,
                     'price_unit': -float(min(discount_amount)),
                     })
+                self.discount_boolean = False

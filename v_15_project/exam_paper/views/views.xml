@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="exam_paper.list">
+      <field name="name">exam_paper list</field>
+      <field name="model">exam_paper</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="exam_paper_action_window">
+      <field name="name">exam_paper window</field>
+      <field name="res_model">exam_paper</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Exam Paper" id="exam_paper_menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="exam_paper_menu_1" parent="exam_paper_menu_root"
+              action="exam_paper_action_window"/>
+
+  </data>
+</odoo>
