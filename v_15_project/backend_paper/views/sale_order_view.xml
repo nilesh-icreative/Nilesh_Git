@@ -9,6 +9,7 @@
       <field name="arch" type="xml">
         <xpath expr="//field[@name='partner_id']" position="after">
           <field name="total_capacity"/>
+          <field name="commision"/>
         </xpath>
         <xpath expr="//field[@name='tax_totals_json']" position="before">
           <button type="object" name="calculate_qty" style="font-size: 10px;" class="btn-primary">Calculate Total Capacity</button>

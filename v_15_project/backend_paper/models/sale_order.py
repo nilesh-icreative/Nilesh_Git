@@ -6,6 +6,16 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     total_capacity = fields.Integer(string="Total Capacity", readonly=True)
+    commision = fields.Float(string="commission", default=2.5)
+
+    @api.onchange('order_line', 'commision', 'partner_id')
+    def _calculate_commission(self):
+        """
+        Calculate Product Commission
+        """
+        for sale_rec in self.order_line:
+            cal_commission = (sale_rec.price_subtotal * self.commision)/100
+            sale_rec.p_commision = cal_commission
 
     def calculate_qty(self):
         """

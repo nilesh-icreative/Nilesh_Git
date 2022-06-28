@@ -19,6 +19,7 @@ class SaleOrder(models.Model):
             block_limit += sale_rec['amount_total']
 
         if block_limit > self.partner_id.blocking_limit_score:
+            self.mail_trigger()
             raise ValidationError("You cannot create SO as the Block Limit has been Exceeded")
 
         return so
@@ -37,6 +38,7 @@ class SaleOrder(models.Model):
             credit_amount += sale_rec_credit['amount_total']
 
         if credit_amount > self.partner_id.credit_limit_score:
+            self.mail_trigger()
             raise ValidationError("Your Sale Order Credit Limit has been Exceeded.")
 
         return so
@@ -62,12 +64,25 @@ class SaleOrder(models.Model):
         so.action_draft()
         return so
 
-    # def write(self, vals):
-    #     """
-    #
-    #     """
-    #     so = super(SaleOrder, self).write(vals)
-    #
-    #     # sale_obj = self.env['sale.order'].search([('id', '=', self.id)]).read([])
-    #     # sale_obj.action_draft()
-    #     return so
+    @api.model
+    def write(self, vals):
+        """
+        Check Limit For Customer
+        """
+        so = super(SaleOrder, self).write(vals)
+        sale_obj = self.env['sale.order'].search([('id', '=', self.id)])
+
+        for sale_rec in sale_obj:
+            if sale_rec['state'] == 'draft':
+                sale_rec.action_draft()
+            elif sale_rec['state'] == 'sale':
+                # sale_rec.action_confirm()
+                print("=========sale=========\n\n")
+
+        return so
+
+    def notify_person_email(self):
+        """
+        Email Send Notify Person in Config Setting
+        """
+        return self.env['ir.config_parameter'].get_param('notify_email')

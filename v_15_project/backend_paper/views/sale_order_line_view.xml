@@ -9,6 +9,7 @@
       <field name="arch" type="xml">
         <xpath expr="//field[@name='order_line']/tree" position="inside">
           <field name="max_qty"/>
+          <field name="p_commision"/>
         </xpath>
       </field>
     </record>
