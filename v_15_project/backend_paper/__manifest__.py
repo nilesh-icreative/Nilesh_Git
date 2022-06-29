@@ -20,6 +20,7 @@
         'views/product_view.xml',
         'views/sale_order_view.xml',
         'views/sale_order_line_view.xml',
+       # 'views/contact_views.xml',
         
     ],
     'application': True,

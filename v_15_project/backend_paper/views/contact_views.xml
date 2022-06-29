@@ -1,0 +1,15 @@
+<odoo>
+  <data>
+
+    <record id="product_variants_from_view" model="ir.ui.view">
+      <field name="name">res.partner.form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='schedule_meeting']" position="before">
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>

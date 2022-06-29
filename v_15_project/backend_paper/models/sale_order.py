@@ -13,6 +13,13 @@ class SaleOrder(models.Model):
         """
         Calculate Product Commission
         """
+        # product_obj = self.env['product.product'].search([('categ_id', '=', 8),
+        #                                                   ('standard_price', '>', 20)],
+        #                                                  limit=10, order='create_date')
+        #print("==================\n\n", product_obj)
+        # product_obj = self.env['product.product'].search([('sale_ok', '=', True),
+        #                                                   ('detailed_type', '=', 'consu')])
+        # print("==================\n\n", product_obj)
         for sale_rec in self.order_line:
             cal_commission = (sale_rec.price_subtotal * self.commision)/100
             sale_rec.p_commision = cal_commission
