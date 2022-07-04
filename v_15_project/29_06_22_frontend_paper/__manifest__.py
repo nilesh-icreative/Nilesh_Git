@@ -14,6 +14,7 @@
 
     # always loaded
     'data': [
+        'security/shop_message_security.xml',
         'views/res_config_setting.xml',
         'views/website_template.xml',
     ],

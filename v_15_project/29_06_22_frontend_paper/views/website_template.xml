@@ -4,7 +4,7 @@
     <template id="website_covid_message"
               inherit_id="website_sale.products">
       <xpath expr="//div[hasclass('products_header')]" position="after">
-        <div style="background-color: yellow">
+        <div style="background-color: khaki" groups="29_06_22_frontend_paper.group_covid_message_boolean">
           "Attention!We are temporarily suspending our services. Your needs have always been our priority, and our promise
           is that we will be back to serve you, as soon as possible. These are difficult times,
           times like no other. Never before, have communities stayed apart to stay safe! Never

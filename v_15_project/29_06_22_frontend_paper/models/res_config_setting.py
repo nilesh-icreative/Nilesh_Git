@@ -5,5 +5,4 @@ class ResConfigSettings(models.TransientModel):
     """
     Add Boolean Field in Website in Res Config Setting
     """
-
-    covid_message_boolean = fields.Boolean(config_parameter="covid_message")
+    group_covid_message_boolean = fields.Boolean(implied_group="29_06_22_frontend_paper.group_covid_message_boolean")

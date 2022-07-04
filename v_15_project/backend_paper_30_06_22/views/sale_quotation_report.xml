@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+
+    <template id="quotation_report"
+              inherit_id="sale.report_saleorder_document">
+      <xpath expr="//th[@name='th_subtotal']" position="after">
+        <th name="length"><span>Length</span></th>
+        <th name="total_length"><span>Total Length</span></th>
+      </xpath>
+      <xpath expr="//td[@name='td_subtotal']" position="after">
+        <td><span t-field="line.length"/></td>
+        <td><span t-field="line.total_length"/></td>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

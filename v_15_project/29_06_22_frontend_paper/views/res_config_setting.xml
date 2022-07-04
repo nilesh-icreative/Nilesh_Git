@@ -12,7 +12,7 @@
               <div class="col-12 col-lg-6 o_setting_box">
                 <span><b>Covid Message</b></span>
                 <div>
-                  <field name="covid_message_boolean"/>
+                  <field name="group_covid_message_boolean"/>
                 </div>
               </div>
             </div>
